@@ -42,13 +42,19 @@
     "@nestjs/graphql": "^7.3.7",
     "@nestjs/platform-express": "^6.8.3",
     "@nrwl/angular": "9.2.3",
+    "apollo-angular": "^1.9.1",
     "apollo-server-express": "^2.13.0",
     "core-js": "^2.5.4",
     "graphql": "^15.0.0",
     "graphql-tools": "^5.0.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
-    "zone.js": "^0.10.2"
+    "zone.js": "^0.10.2",
+    "apollo-angular-link-http": "^1.10.0",
+    "apollo-link": "^1.2.11",
+    "apollo-client": "^2.6.0",
+    "apollo-cache-inmemory": "^1.6.0",
+    "graphql-tag": "^2.10.0"
   },
   "devDependencies": {
     "@angular/cli": "9.1.0",
