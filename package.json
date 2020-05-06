@@ -29,7 +29,6 @@
   },
   "private": true,
   "dependencies": {
-    "@nrwl/angular": "9.2.3",
     "@angular/animations": "^9.1.0",
     "@angular/common": "^9.1.0",
     "@angular/compiler": "^9.1.0",
@@ -38,13 +37,18 @@
     "@angular/platform-browser": "^9.1.0",
     "@angular/platform-browser-dynamic": "^9.1.0",
     "@angular/router": "^9.1.0",
-    "core-js": "^2.5.4",
-    "rxjs": "~6.5.4",
-    "zone.js": "^0.10.2",
     "@nestjs/common": "^6.8.3",
     "@nestjs/core": "^6.8.3",
+    "@nestjs/graphql": "^7.3.7",
     "@nestjs/platform-express": "^6.8.3",
-    "reflect-metadata": "^0.1.13"
+    "@nrwl/angular": "9.2.3",
+    "apollo-server-express": "^2.13.0",
+    "core-js": "^2.5.4",
+    "graphql": "^15.0.0",
+    "graphql-tools": "^5.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "~6.5.4",
+    "zone.js": "^0.10.2"
   },
   "devDependencies": {
     "@angular/cli": "9.1.0",
