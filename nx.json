@@ -31,6 +31,9 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "data-access": {
+      "tags": []
     }
   }
 }
