@@ -11,5 +11,5 @@ export class UsersResolver {
   async getAll() {}
 
   @Mutation(returns => User)
-  async putUser(@Args('input') input: PutUserInput) {}
+  async putUser(@Args('email') email: string) {}
 }
