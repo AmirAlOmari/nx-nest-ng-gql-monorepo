@@ -239,6 +239,16 @@
             "passWithNoTests": true,
             "setupFile": "libs/data-access/src/test-setup.ts"
           }
+        },
+        "generate": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "npx graphql-codegen --config libs/data-access/codegen.yml"
+              }
+            ]
+          }
         }
       },
       "schematics": {

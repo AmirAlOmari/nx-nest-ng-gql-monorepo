@@ -1,0 +1,11 @@
+query userList {
+  getAll {
+    email
+  }
+}
+
+mutation addUser($email: String!) {
+  putUser(email: $email) {
+    email
+  }
+}
