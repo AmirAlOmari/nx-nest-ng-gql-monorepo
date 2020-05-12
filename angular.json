@@ -175,6 +175,17 @@
             "tsConfig": "apps/api/tsconfig.spec.json",
             "passWithNoTests": true
           }
+        },
+        "generate-gql-schema": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "color": true,
+            "commands": [
+              {
+                "command": "./scripts/api-generate-gql-schema.sh"
+              }
+            ]
+          }
         }
       }
     },
