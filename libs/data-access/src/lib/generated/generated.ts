@@ -33,7 +33,13 @@ export type Mutation = {
 
 
 export type MutationPutUserArgs = {
+  input: PutUserInput;
+};
+
+export type PutUserInput = {
   email: Scalars['String'];
+  firstName?: Maybe<Scalars['String']>;
+  lastName?: Maybe<Scalars['String']>;
 };
 
 export type UserListQueryVariables = {};
@@ -48,7 +54,7 @@ export type UserListQuery = (
 );
 
 export type AddUserMutationVariables = {
-  email: Scalars['String'];
+  input: PutUserInput;
 };
 
 
@@ -76,8 +82,8 @@ export const UserListDocument = gql`
     
   }
 export const AddUserDocument = gql`
-    mutation addUser($email: String!) {
-  putUser(email: $email) {
+    mutation addUser($input: PutUserInput!) {
+  putUser(input: $input) {
     email
   }
 }
