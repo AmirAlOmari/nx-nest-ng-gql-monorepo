@@ -1,16 +1,15 @@
-import { ObjectType, Field, ID } from '@nestjs/graphql';
+import { prop } from '@typegoose/typegoose';
 
-@ObjectType()
 export class User {
-  @Field(type => ID)
-  _id: string;
-
-  @Field()
+  @prop({ required: true })
   email: string;
 
-  @Field({ nullable: true })
+  @prop({ required: true })
+  password: string;
+
+  @prop({ default: '' })
   firstName?: string;
 
-  @Field({ nullable: true })
+  @prop({ default: '' })
   lastName?: string;
 }

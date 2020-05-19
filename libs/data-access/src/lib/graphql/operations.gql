@@ -4,8 +4,8 @@ query userList {
   }
 }
 
-mutation addUser($input: PutUserInput!) {
-  putUser(input: $input) {
+mutation registerUser($input: RegisterUserInput!) {
+  registerUser(input: $input) {
     email
   }
 }

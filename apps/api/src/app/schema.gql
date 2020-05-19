@@ -10,11 +10,12 @@ type Query {
 }
 
 type Mutation {
-  putUser(input: PutUserInput!): User!
+  registerUser(input: RegisterUserInput!): User!
 }
 
-input PutUserInput {
+input RegisterUserInput {
   email: String!
+  password: String!
   firstName: String
   lastName: String
 }
