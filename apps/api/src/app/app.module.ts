@@ -4,7 +4,10 @@ import { TypegooseModule } from 'nestjs-typegoose';
 import { join } from 'path';
 
 import { ConfigModule } from './modules/config/config.module';
+import { SharedModule } from './modules/shared/shared.module';
+import { CustomJwtModule } from './modules/jwt/jwt.module';
 import { UsersModule } from './modules/users/users.module';
+import { TasksModule } from './modules/tasks/tasks.module';
 
 import { ConfigService } from './modules/config/services/config/config.service';
 
@@ -27,7 +30,10 @@ import { AppService } from './app.service';
       inject: [ConfigService]
     }),
 
-    UsersModule
+    CustomJwtModule,
+    SharedModule,
+    UsersModule,
+    TasksModule
   ],
   controllers: [AppController],
   providers: [AppService]

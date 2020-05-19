@@ -21,6 +21,11 @@ export type User = {
   lastName?: Maybe<Scalars['String']>;
 };
 
+export type LoginOutput = {
+   __typename?: 'LoginOutput';
+  accessToken: Scalars['String'];
+};
+
 export type Query = {
    __typename?: 'Query';
   getAll: Array<User>;
@@ -29,11 +34,18 @@ export type Query = {
 export type Mutation = {
    __typename?: 'Mutation';
   registerUser: User;
+  login: LoginOutput;
 };
 
 
 export type MutationRegisterUserArgs = {
   input: RegisterUserInput;
+};
+
+
+export type MutationLoginArgs = {
+  password: Scalars['String'];
+  email: Scalars['String'];
 };
 
 export type RegisterUserInput = {

@@ -5,5 +5,5 @@ export const appConfigDefault: IAppConfig = {
   ACCESS_KEY: 'not-so-secret',
   MULTER_PATH: './data/upload',
 
-  OMDBAPI_KEY: 'e60fabc5',
+  JWT_SECRET: 'not-so-secret' // 'e60fabc5',
 };

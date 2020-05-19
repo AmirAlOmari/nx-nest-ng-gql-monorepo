@@ -5,12 +5,17 @@ type User {
   lastName: String
 }
 
+type LoginOutput {
+  accessToken: String!
+}
+
 type Query {
   getAll: [User!]!
 }
 
 type Mutation {
   registerUser(input: RegisterUserInput!): User!
+  login(password: String!, email: String!): LoginOutput!
 }
 
 input RegisterUserInput {
