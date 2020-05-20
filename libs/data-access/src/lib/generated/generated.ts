@@ -9,6 +9,8 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
+  DateTime: any;
 };
 
 
@@ -21,6 +23,18 @@ export type User = {
   lastName?: Maybe<Scalars['String']>;
 };
 
+export type Task = {
+   __typename?: 'Task';
+  _id: Scalars['ID'];
+  user: User;
+  userId: Scalars['String'];
+  name: Scalars['String'];
+  completed: Scalars['Boolean'];
+  description?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['DateTime']>;
+};
+
+
 export type LoginOutput = {
    __typename?: 'LoginOutput';
   accessToken: Scalars['String'];
@@ -28,11 +42,16 @@ export type LoginOutput = {
 
 export type Query = {
    __typename?: 'Query';
+  getMyTasks: Array<Task>;
   getAll: Array<User>;
 };
 
 export type Mutation = {
    __typename?: 'Mutation';
+  createTask: Task;
+  updateTask: Task;
+  completeTask: Task;
+  removeTask: Task;
   registerUser: User;
   login: LoginOutput;
 };

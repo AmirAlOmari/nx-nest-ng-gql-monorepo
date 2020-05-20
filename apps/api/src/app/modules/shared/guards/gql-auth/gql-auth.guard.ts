@@ -2,13 +2,13 @@ import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
 import { Observable } from 'rxjs';
 
-import { CustomJwtService } from '../../../jwt/services/jwt/jwt.service';
+import { JwtService } from '../../../jwt/services/jwt/jwt.service';
 import { UserService } from '../../../users/services/user/user.service';
 
 @Injectable()
 export class GqlAuthGuard implements CanActivate {
   constructor(
-    public customJwtService: CustomJwtService,
+    public customJwtService: JwtService,
     public userService: UserService
   ) {}
 

@@ -5,15 +5,35 @@ type User {
   lastName: String
 }
 
+type Task {
+  _id: ID!
+  user: User!
+  userId: String!
+  name: String!
+  completed: Boolean!
+  description: String
+  date: DateTime
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type LoginOutput {
   accessToken: String!
 }
 
 type Query {
+  getMyTasks: [Task!]!
   getAll: [User!]!
 }
 
 type Mutation {
+  createTask: Task!
+  updateTask: Task!
+  completeTask: Task!
+  removeTask: Task!
   registerUser(input: RegisterUserInput!): User!
   login(password: String!, email: String!): LoginOutput!
 }

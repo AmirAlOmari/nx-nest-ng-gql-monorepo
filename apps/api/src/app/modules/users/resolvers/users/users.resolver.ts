@@ -10,7 +10,9 @@ export class UsersResolver {
   constructor(public userService: UserService) {}
 
   @Query(returns => [UserObjectType])
-  async getAll() {}
+  async getAll() {
+    return await this.userService.getAllUsers();
+  }
 
   // TODO: should be moved to `auth` module
   @Mutation(returns => UserObjectType)

@@ -5,7 +5,7 @@ import { join } from 'path';
 
 import { ConfigModule } from './modules/config/config.module';
 import { SharedModule } from './modules/shared/shared.module';
-import { CustomJwtModule } from './modules/jwt/jwt.module';
+import { JwtModule } from './modules/jwt/jwt.module';
 import { UsersModule } from './modules/users/users.module';
 import { TasksModule } from './modules/tasks/tasks.module';
 
@@ -30,7 +30,7 @@ import { AppService } from './app.service';
       inject: [ConfigService]
     }),
 
-    CustomJwtModule,
+    JwtModule,
     SharedModule,
     UsersModule,
     TasksModule

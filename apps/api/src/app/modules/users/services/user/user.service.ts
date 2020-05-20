@@ -3,7 +3,7 @@ import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { hash } from 'argon2';
 
-import { CustomJwtService } from '../../../jwt/services/jwt/jwt.service';
+import { JwtService } from '../../../jwt/services/jwt/jwt.service';
 
 import { User } from '../../models/user/user.model';
 import { RegisterUserDto } from '../../dtos/register-user/register-user.dto';
@@ -11,7 +11,7 @@ import { RegisterUserDto } from '../../dtos/register-user/register-user.dto';
 @Injectable()
 export class UserService {
   constructor(
-    public customJwtService: CustomJwtService,
+    public customJwtService: JwtService,
     @InjectModel(User) public userModel: ReturnModelType<typeof User>
   ) {}
 
