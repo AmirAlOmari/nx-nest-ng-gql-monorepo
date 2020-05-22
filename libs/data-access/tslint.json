@@ -5,6 +5,6 @@
     "component-selector": [true, "element", "linkedout", "kebab-case"]
   },
   "linterOptions": {
-    "exclude": ["!**/*"]
+    "exclude": ["!**/*", "**/generated/**/*.*"]
   }
 }
