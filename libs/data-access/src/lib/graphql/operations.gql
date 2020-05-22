@@ -1,11 +1,17 @@
-query userList {
-  getAll {
+query getMyUser {
+  getMyUser {
+    _id
     email
+    firstName
+    lastName
   }
 }
 
 mutation registerUser($input: RegisterUserInput!) {
   registerUser(input: $input) {
+    _id
     email
+    firstName
+    lastName
   }
 }

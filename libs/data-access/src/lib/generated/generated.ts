@@ -23,6 +23,11 @@ export type User = {
   lastName?: Maybe<Scalars['String']>;
 };
 
+export type LoginOutput = {
+   __typename?: 'LoginOutput';
+  accessToken: Scalars['String'];
+};
+
 export type Task = {
    __typename?: 'Task';
   _id: Scalars['ID'];
@@ -35,25 +40,26 @@ export type Task = {
 };
 
 
-export type LoginOutput = {
-   __typename?: 'LoginOutput';
-  accessToken: Scalars['String'];
-};
-
 export type Query = {
    __typename?: 'Query';
+  login: LoginOutput;
   getMyTasks: Array<Task>;
-  getAll: Array<User>;
+  getMyUser: User;
+};
+
+
+export type QueryLoginArgs = {
+  password: Scalars['String'];
+  email: Scalars['String'];
 };
 
 export type Mutation = {
    __typename?: 'Mutation';
-  createTask: Task;
-  updateTask: Task;
-  completeTask: Task;
-  removeTask: Task;
   registerUser: User;
-  login: LoginOutput;
+  createMyTask: Task;
+  updateMyTask: Task;
+  completeMyTask: Task;
+  removeMyTask: Task;
 };
 
 
@@ -62,9 +68,23 @@ export type MutationRegisterUserArgs = {
 };
 
 
-export type MutationLoginArgs = {
-  password: Scalars['String'];
-  email: Scalars['String'];
+export type MutationCreateMyTaskArgs = {
+  input: CreateMyTaskInput;
+};
+
+
+export type MutationUpdateMyTaskArgs = {
+  input: CreateMyTaskInput;
+};
+
+
+export type MutationCompleteMyTaskArgs = {
+  input: CreateMyTaskInput;
+};
+
+
+export type MutationRemoveMyTaskArgs = {
+  input: CreateMyTaskInput;
 };
 
 export type RegisterUserInput = {
@@ -74,15 +94,21 @@ export type RegisterUserInput = {
   lastName?: Maybe<Scalars['String']>;
 };
 
-export type UserListQueryVariables = {};
+export type CreateMyTaskInput = {
+  name: Scalars['String'];
+  description?: Maybe<Scalars['String']>;
+  date?: Maybe<Scalars['String']>;
+};
+
+export type GetMyUserQueryVariables = {};
 
 
-export type UserListQuery = (
+export type GetMyUserQuery = (
   { __typename?: 'Query' }
-  & { getAll: Array<(
+  & { getMyUser: (
     { __typename?: 'User' }
-    & Pick<User, 'email'>
-  )> }
+    & Pick<User, '_id' | 'email' | 'firstName' | 'lastName'>
+  ) }
 );
 
 export type RegisterUserMutationVariables = {
@@ -94,14 +120,17 @@ export type RegisterUserMutation = (
   { __typename?: 'Mutation' }
   & { registerUser: (
     { __typename?: 'User' }
-    & Pick<User, 'email'>
+    & Pick<User, '_id' | 'email' | 'firstName' | 'lastName'>
   ) }
 );
 
-export const UserListDocument = gql`
-    query userList {
-  getAll {
+export const GetMyUserDocument = gql`
+    query getMyUser {
+  getMyUser {
+    _id
     email
+    firstName
+    lastName
   }
 }
     `;
@@ -109,14 +138,17 @@ export const UserListDocument = gql`
   @Injectable({
     providedIn: 'root'
   })
-  export class UserListGQL extends Apollo.Query<UserListQuery, UserListQueryVariables> {
-    document = UserListDocument;
+  export class GetMyUserGQL extends Apollo.Query<GetMyUserQuery, GetMyUserQueryVariables> {
+    document = GetMyUserDocument;
     
   }
 export const RegisterUserDocument = gql`
     mutation registerUser($input: RegisterUserInput!) {
   registerUser(input: $input) {
+    _id
     email
+    firstName
+    lastName
   }
 }
     `;

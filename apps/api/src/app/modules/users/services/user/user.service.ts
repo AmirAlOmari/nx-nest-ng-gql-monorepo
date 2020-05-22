@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
-import { hash } from 'argon2';
 
+// Jwt module
 import { JwtService } from '../../../jwt/services/jwt/jwt.service';
 
+// User module
 import { User } from '../../models/user/user.model';
-import { RegisterUserDto } from '../../dtos/register-user/register-user.dto';
+import { CreateUserDto } from '../../dtos/create-user/create-user.dto';
 
 @Injectable()
 export class UserService {
@@ -27,40 +28,23 @@ export class UserService {
     return user;
   }
 
-  async login(email: string, password: string) {
-    const hashedPassword = await this.hashPassword(password);
+  async getUserWithShape(shape: Partial<User>) {
+    const foundUser = await this.userModel.findOne(shape).exec();
 
-    const foundUser = await this.userModel
-      .findOne({ email, password: hashedPassword })
-      .exec();
-
-    if (!foundUser) {
-      throw new Error(`Wrong credentials`);
-    }
-
-    const accessToken = await this.customJwtService.signAsync({
-      userId: foundUser._id
-    });
-    const output = { accessToken: accessToken };
-
-    return output;
+    return foundUser;
   }
 
-  async registerUser(registerUserDto: RegisterUserDto) {
-    const hashedPassword = await this.hashPassword(registerUserDto.password);
-    const createUserDto = {
-      ...registerUserDto,
-      password: hashedPassword
-    };
+  async createUser(createUserDto: CreateUserDto) {
+    const foundUserWithTheSameEmail = await this.getUserWithShape({
+      email: createUserDto.email
+    });
+
+    if (foundUserWithTheSameEmail) {
+      throw Error(`User with email ${createUserDto.email} already exists`); // TODO: extend and store different errors in separate place
+    }
 
     const createdUser = await new this.userModel(createUserDto).save();
 
     return createdUser;
-  }
-
-  async hashPassword(inputPassword: string) {
-    const hashedPassword = await hash(inputPassword);
-
-    return hashedPassword;
   }
 }

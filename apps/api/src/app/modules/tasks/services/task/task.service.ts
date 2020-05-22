@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
-import { ReturnModelType } from '@typegoose/typegoose';
+import { ReturnModelType, DocumentType } from '@typegoose/typegoose';
 
+// Users module
+import { User } from '../../../users/models/user/user.model';
+
+// Task module
+import { CreateTaskDto } from '../../dtos/create-task/create-task.dto';
 import { Task } from '../../models/task/task.model';
 
 @Injectable()
@@ -25,5 +30,17 @@ export class TaskService {
     const allUserTasks = await this.taskModel.find({ userId }).exec();
 
     return allUserTasks;
+  }
+
+  async createTaskForUser(
+    user: DocumentType<User>,
+    createTaskDto: CreateTaskDto
+  ) {
+    const createdTask = await new this.taskModel({
+      ...createTaskDto,
+      userId: user._id
+    }).save();
+
+    return createdTask;
   }
 }

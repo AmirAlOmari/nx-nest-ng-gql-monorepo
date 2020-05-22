@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
 
+// Config module
 import { ConfigModule } from '../config/config.module';
+
+// Jwt module
 import { JwtModule } from '../jwt/jwt.module';
+
+// Users module
 import { UsersModule } from '../users/users.module';
 
-import { GqlAuthGuard } from './guards/gql-auth/gql-auth.guard';
-
 @Module({
-  imports: [ConfigModule, JwtModule, UsersModule],
-  providers: [GqlAuthGuard],
-  exports: [GqlAuthGuard]
+  imports: [ConfigModule, JwtModule, UsersModule]
 })
 export class SharedModule {}

@@ -7,17 +7,14 @@ import { UserService } from '../../../users/services/user/user.service';
 
 @Injectable()
 export class GqlAuthGuard implements CanActivate {
-  constructor(
-    public customJwtService: JwtService,
-    public userService: UserService
-  ) {}
+  constructor(public jwtService: JwtService, public userService: UserService) {}
 
   async canActivate(context: ExecutionContext) {
     const ctx = GqlExecutionContext.create(context);
 
     const { req } = ctx.getContext();
 
-    const authToken = req?.headers?.authorization?.replace(/^Bearer /);
+    const authToken = req?.headers?.authorization?.replace(/^Bearer /, '');
 
     if (!authToken) {
       return false;
@@ -26,7 +23,7 @@ export class GqlAuthGuard implements CanActivate {
     let userId = null;
 
     try {
-      ({ userId } = await this.customJwtService.verifyAsync(authToken));
+      ({ userId } = await this.jwtService.verifyAsync(authToken));
     } catch (error) {
       return false;
     }

@@ -3,7 +3,7 @@ import { Ref, prop } from '@typegoose/typegoose';
 import { User } from '../../../users/models/user/user.model';
 
 export class Task {
-  @prop({ ref: User })
+  @prop({ required: true, ref: User })
   userId: Ref<User>;
 
   @prop({ required: true })

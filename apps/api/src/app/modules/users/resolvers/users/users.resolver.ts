@@ -1,33 +1,25 @@
+import { UseGuards } from '@nestjs/common';
 import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import { DocumentType } from '@typegoose/typegoose';
 
+// Shared module
+import { GqlUser } from '../../../shared/decorators/gql-user/gql-user.decorator';
+
+// Auth module
+import { GqlAuthGuard } from '../../../auth/guards/gql-auth/gql-auth.guard';
+
+// User module
+import { User } from '../../models/user/user.model';
 import { UserService } from '../../services/user/user.service';
 import { User as UserObjectType } from '../../obj-types/user/user.obj-type';
-import { RegisterUserInput } from '../../inputs/register-user/register-user.input';
-import { LoginOutput } from '../../outputs/login/login.output';
 
 @Resolver(of => UserObjectType)
 export class UsersResolver {
   constructor(public userService: UserService) {}
 
-  @Query(returns => [UserObjectType])
-  async getAll() {
-    return await this.userService.getAllUsers();
-  }
-
-  // TODO: should be moved to `auth` module
-  @Mutation(returns => UserObjectType)
-  async registerUser(@Args('input') input: RegisterUserInput) {
-    return await this.userService.registerUser(input);
-  }
-
-  // TODO: should be moved to `auth` module
-  @Mutation(returns => LoginOutput)
-  async login(
-    @Args('email') email: string,
-    @Args('password') password: string
-  ) {
-    const output = await this.userService.login(email, password);
-
-    return output;
+  @Query(returns => UserObjectType)
+  @UseGuards(GqlAuthGuard)
+  async getMyUser(@GqlUser() user: DocumentType<User>) {
+    return user;
   }
 }

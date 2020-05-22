@@ -1,3 +1,4 @@
+import { UseGuards } from '@nestjs/common';
 import {
   Resolver,
   Query,
@@ -9,13 +10,21 @@ import {
 } from '@nestjs/graphql';
 import { DocumentType } from '@typegoose/typegoose';
 
+// Auth module
+import { GqlAuthGuard } from '../../../auth/guards/gql-auth/gql-auth.guard';
+
+// Shared module
 import { GqlUser } from '../../../shared/decorators/gql-user/gql-user.decorator';
+
+// User module
 import { UserService } from '../../../users/services/user/user.service';
 import { User as UserObjectType } from '../../../users/obj-types/user/user.obj-type';
+import { User } from '../../../users/models/user/user.model';
 
+// Task module
 import { TaskService } from '../../services/task/task.service';
 import { Task as TaskObjectType } from '../../obj-types/task/task.obj-type';
-import { User } from '../../../users/models/user/user.model';
+import { CreateMyTaskInput } from '../../inputs/create-my-task/create-my-task.input';
 
 @Resolver(of => TaskObjectType)
 export class TasksResolver {
@@ -32,6 +41,7 @@ export class TasksResolver {
   }
 
   @Query(returns => [TaskObjectType])
+  @UseGuards(GqlAuthGuard)
   async getMyTasks(@GqlUser() user: DocumentType<User>) {
     const myTasks = await this.taskService.getAllTasksByUserId(user._id);
 
@@ -39,14 +49,40 @@ export class TasksResolver {
   }
 
   @Mutation(returns => TaskObjectType)
-  async createTask() {}
+  @UseGuards(GqlAuthGuard)
+  async createMyTask(
+    @Args('input') input: CreateMyTaskInput,
+    @GqlUser() user: DocumentType<User>
+  ): Promise<TaskObjectType> {
+    const createdTask = await this.taskService.createTaskForUser(user, input);
+
+    return createdTask.toObject();
+  }
 
   @Mutation(returns => TaskObjectType)
-  async updateTask() {}
+  @UseGuards(GqlAuthGuard)
+  async updateMyTask(
+    @Args('input') input: CreateMyTaskInput,
+    @GqlUser() user: DocumentType<User>
+  ) {
+    throw new Error('Not implemented yet');
+  }
 
   @Mutation(returns => TaskObjectType)
-  async completeTask() {}
+  @UseGuards(GqlAuthGuard)
+  async completeMyTask(
+    @Args('input') input: CreateMyTaskInput,
+    @GqlUser() user: DocumentType<User>
+  ) {
+    throw new Error('Not implemented yet');
+  }
 
   @Mutation(returns => TaskObjectType)
-  async removeTask() {}
+  @UseGuards(GqlAuthGuard)
+  async removeMyTask(
+    @Args('input') input: CreateMyTaskInput,
+    @GqlUser() user: DocumentType<User>
+  ) {
+    throw new Error('Not implemented yet');
+  }
 }

@@ -5,6 +5,10 @@ type User {
   lastName: String
 }
 
+type LoginOutput {
+  accessToken: String!
+}
+
 type Task {
   _id: ID!
   user: User!
@@ -20,22 +24,18 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type LoginOutput {
-  accessToken: String!
-}
-
 type Query {
+  login(password: String!, email: String!): LoginOutput!
   getMyTasks: [Task!]!
-  getAll: [User!]!
+  getMyUser: User!
 }
 
 type Mutation {
-  createTask: Task!
-  updateTask: Task!
-  completeTask: Task!
-  removeTask: Task!
   registerUser(input: RegisterUserInput!): User!
-  login(password: String!, email: String!): LoginOutput!
+  createMyTask(input: CreateMyTaskInput!): Task!
+  updateMyTask(input: CreateMyTaskInput!): Task!
+  completeMyTask(input: CreateMyTaskInput!): Task!
+  removeMyTask(input: CreateMyTaskInput!): Task!
 }
 
 input RegisterUserInput {
@@ -43,4 +43,10 @@ input RegisterUserInput {
   password: String!
   firstName: String
   lastName: String
+}
+
+input CreateMyTaskInput {
+  name: String!
+  description: String = ""
+  date: String
 }
