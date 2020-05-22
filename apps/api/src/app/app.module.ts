@@ -20,8 +20,7 @@ import { AppService } from './app.service';
     ConfigModule,
     GraphQLModule.forRoot({
       autoSchemaFile: join(__dirname, './schema.gql'),
-      // context: (c: any) => c
-      context: ({ req }) => ({ req })
+      context: (c: any) => c
     }),
     TypegooseModule.forRootAsync({
       imports: [ConfigModule],
