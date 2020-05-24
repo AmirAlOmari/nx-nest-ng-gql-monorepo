@@ -42,6 +42,7 @@
     "@nestjs/graphql": "^7.3.7",
     "@nestjs/jwt": "^7.0.0",
     "@nestjs/platform-express": "^7.0.13",
+    "@ngrx/store": "^9.1.2",
     "@nrwl/angular": "9.2.3",
     "@typegoose/typegoose": "^7.1.1",
     "@types/bcrypt": "^3.0.0",
