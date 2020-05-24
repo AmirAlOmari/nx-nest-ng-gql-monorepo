@@ -55,6 +55,7 @@
     "apollo-cache-inmemory": "^1.6.0",
     "apollo-client": "^2.6.0",
     "apollo-link": "^1.2.11",
+    "apollo-link-context": "^1.0.20",
     "apollo-server-express": "^2.13.0",
     "argon2": "^0.26.2",
     "bcrypt": "^4.0.1",
