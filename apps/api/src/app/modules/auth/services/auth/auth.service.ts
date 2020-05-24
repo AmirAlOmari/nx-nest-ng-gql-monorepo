@@ -8,8 +8,9 @@ import { JwtService } from '../../../jwt/services/jwt/jwt.service';
 // Users module
 import { UserService } from '../../../users/services/user/user.service';
 
-// User module
+// Auth module
 import { RegisterUserDto } from '../../dtos/register-user/register-user.dto';
+import { WrongCredentialsError } from '../../errors/wrong-credentials/wrong-credentials.error';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +22,7 @@ export class AuthService {
     });
 
     if (!foundUser) {
-      throw new Error(`Wrong credentials`);
+      throw await WrongCredentialsError.create();
     }
 
     const hashedPassword = await this.hashPassword(password);
@@ -31,7 +32,7 @@ export class AuthService {
     );
 
     if (!passwordVerified) {
-      throw new Error(`Wrong credentials`);
+      throw await WrongCredentialsError.create();
     }
 
     const accessToken = await this.jwtService.signAsync({

@@ -33,9 +33,9 @@ type Query {
 type Mutation {
   registerUser(input: RegisterUserInput!): User!
   createMyTask(input: CreateMyTaskInput!): Task!
-  updateMyTask(input: CreateMyTaskInput!): Task!
-  completeMyTask(input: CreateMyTaskInput!): Task!
-  removeMyTask(input: CreateMyTaskInput!): Task!
+  updateMyTask(input: UpdateMyTaskInput!): Task!
+  removeMyTask(input: RemoveMyTaskInput!): Task!
+  completeMyTask(input: CompleteMyTaskInput!): Task!
 }
 
 input RegisterUserInput {
@@ -49,4 +49,19 @@ input CreateMyTaskInput {
   name: String!
   description: String = ""
   date: String
+}
+
+input UpdateMyTaskInput {
+  name: String
+  description: String = ""
+  date: String
+  _id: ID!
+}
+
+input RemoveMyTaskInput {
+  _id: ID!
+}
+
+input CompleteMyTaskInput {
+  _id: ID!
 }

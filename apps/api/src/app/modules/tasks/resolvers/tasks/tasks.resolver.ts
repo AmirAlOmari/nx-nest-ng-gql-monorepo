@@ -25,6 +25,9 @@ import { User } from '../../../users/models/user/user.model';
 import { TaskService } from '../../services/task/task.service';
 import { Task as TaskObjectType } from '../../obj-types/task/task.obj-type';
 import { CreateMyTaskInput } from '../../inputs/create-my-task/create-my-task.input';
+import { UpdateMyTaskInput } from '../../inputs/update-my-task/update-my-task.input';
+import { RemoveMyTaskInput } from '../../inputs/remove-my-task/remove-my-tasl.input';
+import { CompleteMyTaskInput } from '../../inputs/complete-my-task/complete-my-task.input';
 
 @Resolver(of => TaskObjectType)
 export class TasksResolver {
@@ -62,16 +65,7 @@ export class TasksResolver {
   @Mutation(returns => TaskObjectType)
   @UseGuards(GqlAuthGuard)
   async updateMyTask(
-    @Args('input') input: CreateMyTaskInput,
-    @GqlUser() user: DocumentType<User>
-  ) {
-    throw new Error('Not implemented yet');
-  }
-
-  @Mutation(returns => TaskObjectType)
-  @UseGuards(GqlAuthGuard)
-  async completeMyTask(
-    @Args('input') input: CreateMyTaskInput,
+    @Args('input') input: UpdateMyTaskInput,
     @GqlUser() user: DocumentType<User>
   ) {
     throw new Error('Not implemented yet');
@@ -80,7 +74,16 @@ export class TasksResolver {
   @Mutation(returns => TaskObjectType)
   @UseGuards(GqlAuthGuard)
   async removeMyTask(
-    @Args('input') input: CreateMyTaskInput,
+    @Args('input') input: RemoveMyTaskInput,
+    @GqlUser() user: DocumentType<User>
+  ) {
+    throw new Error('Not implemented yet');
+  }
+
+  @Mutation(returns => TaskObjectType)
+  @UseGuards(GqlAuthGuard)
+  async completeMyTask(
+    @Args('input') input: CompleteMyTaskInput,
     @GqlUser() user: DocumentType<User>
   ) {
     throw new Error('Not implemented yet');

@@ -1,9 +1,6 @@
-query getMyUser {
-  getMyUser {
-    _id
-    email
-    firstName
-    lastName
+query login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    accessToken
   }
 }
 

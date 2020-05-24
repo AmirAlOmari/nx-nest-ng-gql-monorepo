@@ -11,7 +11,7 @@ export const createApolloOptions = (): Provider => {
     provide: APOLLO_OPTIONS,
     deps: [HttpLink],
     useFactory: (httpLink: HttpLink) => ({
-      link: httpLink.create({ uri: environment.serverUrl }),
+      link: httpLink.create({ uri: `${environment.serverUrl}/graphql` }),
       cache: new InMemoryCache()
     })
   };

@@ -1,0 +1,41 @@
+query getMyTasks {
+  getMyTasks {
+    _id
+    name
+    description
+    completed
+    date
+  }
+}
+
+mutation createMyTask($input: CreateMyTaskInput!) {
+  createMyTask(input: $input) {
+    _id
+    name
+    completed
+    description
+    date
+  }
+}
+
+mutation updateMyTask($input: UpdateMyTaskInput!) {
+  updateMyTask(input: $input) {
+    _id
+    name
+    completed
+    description
+    date
+  }
+}
+
+mutation removeMyTask($input: RemoveMyTaskInput!) {
+  removeMyTask(input: $input) {
+    _id
+  }
+}
+
+mutation completeMyTask($input: CompleteMyTaskInput!) {
+  completeMyTask(input: $input) {
+    _id
+  }
+}

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Message } from '@linkedout/api-interfaces';
 
 @Component({
-  selector: 'linkedout-root',
+  selector: 'meepo-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
