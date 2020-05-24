@@ -63,6 +63,7 @@
     "graphql-tools": "^5.0.0",
     "mongoose": "^5.9.14",
     "nestjs-typegoose": "^7.1.22",
+    "ngx-webstorage-service": "^4.1.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
     "zone.js": "^0.10.2"
