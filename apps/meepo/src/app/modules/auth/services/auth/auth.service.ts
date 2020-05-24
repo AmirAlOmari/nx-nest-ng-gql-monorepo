@@ -6,14 +6,14 @@ import { takeUntil, mergeMap, map } from 'rxjs/operators';
 
 import { LoginGQL, LoginQuery } from '@linkedout/data-access';
 
-import { ATStorageKey } from '../../constants/at-storage-key/at-storage-key.const';
+import { AccessTokenService } from '../access-token/access-token.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService implements OnDestroy {
   constructor(
-    @Inject(LOCAL_STORAGE) public webStorageService: WebStorageService,
+    public accessTokenService: AccessTokenService,
     public loginGQL: LoginGQL
   ) {}
 
@@ -39,25 +39,20 @@ export class AuthService implements OnDestroy {
 
   // TODO: navigate somewhere (?) on logout
   async logout() {
-    await this.removeAccessToken();
+    await this.accessTokenService.removeAccessToken();
   }
 
   async isLoggedIn() {
-    const accessToken = await this.retrieveAccessToken();
+    const accessToken = await this.accessTokenService.retrieveAccessToken();
 
     return !!accessToken;
   }
 
-  async storeAccessToken(accessToken: string) {
-    await this.webStorageService.set(ATStorageKey, accessToken);
-  }
+  async createHttpAuthHeader() {
+    const accessToken = await this.accessTokenService.retrieveAccessToken();
+    const httpAuthHeader = `Bearer ${accessToken}`;
 
-  async retrieveAccessToken() {
-    return (await this.webStorageService.get(ATStorageKey)) as string;
-  }
-
-  async removeAccessToken() {
-    await this.webStorageService.remove(ATStorageKey);
+    return httpAuthHeader;
   }
 
   ngOnDestroy() {
