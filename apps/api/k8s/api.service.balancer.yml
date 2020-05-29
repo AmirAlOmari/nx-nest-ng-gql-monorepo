@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: linkedout-api
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: linkedout-api
+  selector:
+    app: linkedout-api

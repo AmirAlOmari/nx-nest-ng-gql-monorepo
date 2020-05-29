@@ -24,7 +24,7 @@ export class AuthService implements OnDestroy {
       // TODO: overthink, is it the clearest way to provide _optimistic_ response
       mergeMap(isLoggedIn =>
         isLoggedIn
-          ? from(this.retrieveAccessToken()).pipe(
+          ? from(this.accessTokenService.retrieveAccessToken()).pipe(
               map(accessToken =>
                 this.__fakeAppoloQueryResult<LoginQuery>({
                   login: { accessToken }
