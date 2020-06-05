@@ -2,9 +2,9 @@ import { Injectable, OnDestroy, Inject } from '@angular/core';
 import { LOCAL_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { ApolloQueryResult, NetworkStatus } from 'apollo-client';
 import { Subject, of, from } from 'rxjs';
-import { takeUntil, mergeMap, map } from 'rxjs/operators';
+import { takeUntil, mergeMap, map, switchMap, tap } from 'rxjs/operators';
 
-import { LoginGQL, LoginQuery } from '@linkedout/data-access';
+import { LoginGQL, LoginMutation } from '@linkedout/data-access';
 
 import { AccessTokenService } from '../access-token/access-token.service';
 
@@ -22,16 +22,26 @@ export class AuthService implements OnDestroy {
   login(email: string, password: string) {
     return from(this.isLoggedIn()).pipe(
       // TODO: overthink, is it the clearest way to provide _optimistic_ response
-      mergeMap(isLoggedIn =>
+      switchMap(isLoggedIn =>
         isLoggedIn
-          ? from(this.retrieveAccessToken()).pipe(
+          ? from(this.accessTokenService.retrieveAccessToken()).pipe(
               map(accessToken =>
-                this.__fakeAppoloQueryResult<LoginQuery>({
+                this.__fakeAppoloQueryResult<LoginMutation>({
                   login: { accessToken }
                 })
               )
             )
-          : this.loginGQL.fetch({ email, password })
+          : this.loginGQL.mutate({ email, password }).pipe(
+              tap(gqlResult => {
+                if (!gqlResult?.data) {
+                  return;
+                }
+
+                const { accessToken } = gqlResult.data.login;
+
+                this.accessTokenService.storeAccessToken(accessToken);
+              })
+            )
       ),
       takeUntil(this.ngDestroy$)
     );

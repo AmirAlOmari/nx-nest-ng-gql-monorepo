@@ -25,12 +25,12 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 scalar DateTime
 
 type Query {
-  login(password: String!, email: String!): LoginOutput!
   getMyTasks: [Task!]!
   getMyUser: User!
 }
 
 type Mutation {
+  login(password: String!, email: String!): LoginOutput!
   registerUser(input: RegisterUserInput!): User!
   createMyTask(input: CreateMyTaskInput!): Task!
   updateMyTask(input: UpdateMyTaskInput!): Task!
