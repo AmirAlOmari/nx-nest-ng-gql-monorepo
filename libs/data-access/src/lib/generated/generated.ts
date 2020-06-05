@@ -42,24 +42,24 @@ export type Task = {
 
 export type Query = {
    __typename?: 'Query';
-  login: LoginOutput;
   getMyTasks: Array<Task>;
   getMyUser: User;
 };
 
-
-export type QueryLoginArgs = {
-  password: Scalars['String'];
-  email: Scalars['String'];
-};
-
 export type Mutation = {
    __typename?: 'Mutation';
+  login: LoginOutput;
   registerUser: User;
   createMyTask: Task;
   updateMyTask: Task;
   removeMyTask: Task;
   completeMyTask: Task;
+};
+
+
+export type MutationLoginArgs = {
+  password: Scalars['String'];
+  email: Scalars['String'];
 };
 
 
@@ -115,14 +115,14 @@ export type CompleteMyTaskInput = {
   _id: Scalars['ID'];
 };
 
-export type LoginQueryVariables = {
+export type LoginMutationVariables = {
   email: Scalars['String'];
   password: Scalars['String'];
 };
 
 
-export type LoginQuery = (
-  { __typename?: 'Query' }
+export type LoginMutation = (
+  { __typename?: 'Mutation' }
   & { login: (
     { __typename?: 'LoginOutput' }
     & Pick<LoginOutput, 'accessToken'>
@@ -217,7 +217,7 @@ export type GetMyUserQuery = (
 );
 
 export const LoginDocument = gql`
-    query login($email: String!, $password: String!) {
+    mutation login($email: String!, $password: String!) {
   login(email: $email, password: $password) {
     accessToken
   }
@@ -227,7 +227,7 @@ export const LoginDocument = gql`
   @Injectable({
     providedIn: 'root'
   })
-  export class LoginGQL extends Apollo.Query<LoginQuery, LoginQueryVariables> {
+  export class LoginGQL extends Apollo.Mutation<LoginMutation, LoginMutationVariables> {
     document = LoginDocument;
     
   }

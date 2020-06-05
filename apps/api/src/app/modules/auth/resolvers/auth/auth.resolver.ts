@@ -14,7 +14,7 @@ import { WrongCredentialsError } from '../../errors/wrong-credentials/wrong-cred
 export class AuthResolver {
   constructor(public authService: AuthService) {}
 
-  @Query(returns => LoginOutput)
+  @Mutation(returns => LoginOutput)
   async login(
     @Args('email') email: string,
     @Args('password') password: string
