@@ -25,7 +25,10 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points && node ./decorate-angular-cli.js"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points && node ./decorate-angular-cli.js",
+    "conventional-recommended-bump": "conventional-recommended-bump",
+    "conventional-recommended-bump:local": "conventional-recommended-bump --config ./tools/cc-configs/local/config.js",
+    "release:bump:local": "standard-version --release-as $(yarn run --silent conventional-recommended-bump:local)"
   },
   "private": true,
   "dependencies": {
@@ -77,6 +80,8 @@
     "@angular/cli": "10.0.5",
     "@angular/compiler-cli": "10.0.8",
     "@angular/language-service": "10.0.8",
+    "@commitlint/cli": "^9.1.1",
+    "@commitlint/config-conventional": "^9.1.1",
     "@graphql-codegen/cli": "^1.13.5",
     "@graphql-codegen/typescript-apollo-angular": "^1.13.5",
     "@graphql-codegen/typescript-operations": "^1.13.5",
@@ -91,16 +96,22 @@
     "@types/jest": "25.1.4",
     "@types/node": "~8.9.4",
     "codelyzer": "~5.0.1",
+    "commitizen": "^4.1.2",
+    "conventional-changelog-conventionalcommits": "^4.3.0",
+    "conventional-recommended-bump": "^6.0.9",
     "cypress": "^4.1.0",
+    "cz-conventional-changelog": "^3.2.0",
     "dotenv": "6.2.0",
     "eslint": "6.8.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "husky": "^4.2.5",
     "jest": "25.2.3",
     "jest-preset-angular": "8.1.2",
     "prettier": "2.0.4",
+    "standard-version": "^8.0.2",
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "3.9.7",
-    "eslint-plugin-cypress": "^2.10.3"
+    "typescript": "3.9.7"
   }
 }
