@@ -7,7 +7,7 @@ import {
   CreateMyTaskGQL,
   UpdateMyTaskGQL,
   RemoveMyTaskGQL,
-  CompleteMyTaskGQL
+  CompleteMyTaskGQL,
 } from '@linkedout/data-access';
 
 import { CreateTaskDto } from '../../dtos/create-task/create-task.dto';
@@ -16,7 +16,7 @@ import { RemoveTaskDto } from '../../dtos/remove-task/remove-task.dto';
 import { CompleteTaskDto } from '../../dtos/complete-task/complete-task.dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TasksService implements OnDestroy {
   constructor(
@@ -38,7 +38,7 @@ export class TasksService implements OnDestroy {
   createTask(createTaskDto: CreateTaskDto) {
     return this.createMyTaskGQL
       .mutate({
-        input: createTaskDto
+        input: createTaskDto,
       })
       .pipe(takeUntil(this.ngDestroy$));
   }
@@ -46,7 +46,7 @@ export class TasksService implements OnDestroy {
   updateTask(updateTaskDto: UpdateTaskDto) {
     return this.updateMyTaskGQL
       .mutate({
-        input: updateTaskDto
+        input: updateTaskDto,
       })
       .pipe(takeUntil(this.ngDestroy$));
   }
@@ -54,7 +54,7 @@ export class TasksService implements OnDestroy {
   removeTask(removeTaskDto: RemoveTaskDto) {
     return this.removeMyTaskGQL
       .mutate({
-        input: removeTaskDto
+        input: removeTaskDto,
       })
       .pipe(takeUntil(this.ngDestroy$));
   }
@@ -62,7 +62,7 @@ export class TasksService implements OnDestroy {
   completeTask(completeTaskDto: CompleteTaskDto) {
     return this.completeMyTaskGQL
       .mutate({
-        input: completeTaskDto
+        input: completeTaskDto,
       })
       .pipe(takeUntil(this.ngDestroy$));
   }

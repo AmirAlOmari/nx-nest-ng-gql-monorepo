@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 import { GetMyUserGQL } from '@linkedout/data-access';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService implements OnDestroy {
   constructor(public getMyUserGQL: GetMyUserGQL) {}

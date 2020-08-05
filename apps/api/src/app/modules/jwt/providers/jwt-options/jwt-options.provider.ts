@@ -8,7 +8,7 @@ export const jwtOptionsProvider: Provider = {
   provide: JWT_OPTIONS,
   useFactory: async (configService: ConfigService) => ({
     secret: configService.get('JWT_SECRET'),
-    signOptions: { expiresIn: '24h' }
+    signOptions: { expiresIn: '24h' },
   }),
-  inject: [ConfigService]
+  inject: [ConfigService],
 };

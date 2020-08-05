@@ -18,7 +18,7 @@ export class AuthService {
 
   async login(email: string, password: string) {
     const foundUser = await this.userService.getUserWithShape({
-      email
+      email,
     });
 
     if (!foundUser) {
@@ -36,7 +36,7 @@ export class AuthService {
     }
 
     const accessToken = await this.jwtService.signAsync({
-      userId: foundUser._id
+      userId: foundUser._id,
     });
     const result = { accessToken: accessToken };
 
@@ -47,7 +47,7 @@ export class AuthService {
     const hashedPassword = await this.hashPassword(registerUserDto.password);
     const createUserDto = {
       ...registerUserDto,
-      password: hashedPassword
+      password: hashedPassword,
     };
 
     const createdUser = await this.userService.createUser(createUserDto);

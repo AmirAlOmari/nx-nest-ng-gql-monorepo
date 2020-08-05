@@ -38,7 +38,7 @@ export class TaskService {
   ) {
     const createdTask = await new this.taskModel({
       ...createTaskDto,
-      userId: user._id
+      userId: user._id,
     }).save();
 
     return createdTask;

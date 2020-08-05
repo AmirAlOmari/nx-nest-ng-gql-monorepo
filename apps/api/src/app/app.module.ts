@@ -31,18 +31,18 @@ import { AppService } from './app.service';
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get('DATABASE_URI'),
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
       }),
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
 
     JwtModule,
     SharedModule,
     UsersModule,
     AuthModule,
-    TasksModule
+    TasksModule,
   ],
   controllers: [AppController],
-  providers: [AppService]
+  providers: [AppService],
 })
 export class AppModule {}

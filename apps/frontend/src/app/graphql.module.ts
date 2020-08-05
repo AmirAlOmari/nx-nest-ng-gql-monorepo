@@ -6,6 +6,6 @@ import { createApolloOptions } from './providers/apollo-options/apollo-options.p
 
 @NgModule({
   exports: [ApolloModule, HttpLinkModule],
-  providers: [createApolloOptions()]
+  providers: [createApolloOptions()],
 })
 export class GraphQLModule {}

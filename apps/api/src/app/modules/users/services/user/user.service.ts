@@ -36,7 +36,7 @@ export class UserService {
 
   async createUser(createUserDto: CreateUserDto) {
     const foundUserWithTheSameEmail = await this.getUserWithShape({
-      email: createUserDto.email
+      email: createUserDto.email,
     });
 
     if (foundUserWithTheSameEmail) {

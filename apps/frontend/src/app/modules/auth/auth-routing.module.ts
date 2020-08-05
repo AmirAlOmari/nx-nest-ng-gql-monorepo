@@ -7,26 +7,26 @@ import { AuthModeResolveService } from './services/auth-mode-resolve/auth-mode-r
 const routes: Routes = [
   {
     path: '',
-    component: AuthPageComponent
+    component: AuthPageComponent,
   },
   {
     path: 'login',
     component: AuthPageComponent,
     resolve: {
-      authMode: AuthModeResolveService
-    }
+      authMode: AuthModeResolveService,
+    },
   },
   {
     path: 'register',
     component: AuthPageComponent,
     resolve: {
-      authMode: AuthModeResolveService
-    }
-  }
+      authMode: AuthModeResolveService,
+    },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AuthRoutingModule {}

@@ -12,6 +12,6 @@ import { UsersResolver } from './resolvers/users/users.resolver';
 @Module({
   imports: [JwtModule, TypegooseModule.forFeature([User])],
   providers: [UserService, UsersResolver],
-  exports: [UserService]
+  exports: [UserService],
 })
 export class UsersModule {}

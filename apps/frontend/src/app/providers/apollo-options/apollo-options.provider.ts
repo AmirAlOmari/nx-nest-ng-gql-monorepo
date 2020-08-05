@@ -29,8 +29,8 @@ export const createApolloOptions = (): Provider => {
 
         return {
           headers: {
-            Authorization: `Bearer ${await accessTokenService.retrieveAccessToken()}`
-          }
+            Authorization: `Bearer ${await accessTokenService.retrieveAccessToken()}`,
+          },
         };
       });
 
@@ -38,8 +38,8 @@ export const createApolloOptions = (): Provider => {
 
       return {
         link: ApolloLink.from([authLink, httpLink]),
-        cache: new InMemoryCache()
+        cache: new InMemoryCache(),
       };
-    }
+    },
   };
 };
