@@ -82,16 +82,14 @@
               "apps/meepo/tsconfig.app.json",
               "apps/meepo/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/meepo/**"]
+            "exclude": ["**/node_modules/**", "!apps/meepo/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/meepo/jest.config.js",
-            "tsConfig": "apps/meepo/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/meepo/src/test-setup.ts"
+            "passWithNoTests": true
           }
         }
       }
@@ -118,7 +116,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": ["apps/meepo-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/meepo-e2e/**"]
+            "exclude": ["**/node_modules/**", "!apps/meepo-e2e/**/*"]
           }
         }
       }
@@ -166,14 +164,13 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**"]
+            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/api/jest.config.js",
-            "tsConfig": "apps/api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         },
@@ -203,14 +200,13 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**"]
+            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/api-interfaces/jest.config.js",
-            "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -229,16 +225,14 @@
               "libs/data-access/tsconfig.lib.json",
               "libs/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/data-access/**"]
+            "exclude": ["**/node_modules/**", "!libs/data-access/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/data-access/jest.config.js",
-            "tsConfig": "libs/data-access/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/data-access/src/test-setup.ts"
+            "passWithNoTests": true
           }
         },
         "generate": {
