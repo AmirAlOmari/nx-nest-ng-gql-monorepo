@@ -25,7 +25,10 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points && node ./decorate-angular-cli.js"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points && node ./decorate-angular-cli.js",
+    "conventional-recommended-bump": "conventional-recommended-bump",
+    "conventional-recommended-bump:local": "conventional-recommended-bump --config ./tools/cc-configs/local/config.js",
+    "release:bump:local": "standard-version --release-as $(yarn run --silent conventional-recommended-bump:local)"
   },
   "private": true,
   "dependencies": {
