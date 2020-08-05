@@ -7,6 +7,7 @@ type User {
 
 type LoginOutput {
   accessToken: String!
+  me: User!
 }
 
 type Task {
@@ -52,7 +53,7 @@ input CreateMyTaskInput {
 }
 
 input UpdateMyTaskInput {
-  name: String
+  name: String!
   description: String = ""
   date: String
   _id: ID!

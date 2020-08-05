@@ -1,0 +1,19 @@
+:host {
+  .update-task-form {
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: none;
+
+      button[type='submit'] {
+        margin: auto;
+      }
+    }
+
+    > * {
+      // margin: 6px;
+    }
+  }
+}

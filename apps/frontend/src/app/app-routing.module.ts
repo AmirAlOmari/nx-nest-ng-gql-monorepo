@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-// import { AuthModeResolveService } from './modules/auth/services/auth-mode-resolve/auth-mode-resolve.service';
-// import { AuthPageComponent } from './modules/auth/pages/auth-page/auth-page.component';
+import { LoggedInGuard } from './modules/auth/guards/logged-in/logged-in.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
@@ -12,23 +11,23 @@ const routes: Routes = [
   },
   {
     path: 'auth',
+    /**
+     * TODO: overthink: do we need lazy loading here? 🤔
+     */
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
-  // {
-  //   path: 'login',
-  //   component: AuthPageComponent,
-  //   resolve: {
-  //     authMode: AuthModeResolveService
-  //   }
-  // },
-  // {
-  //   path: 'register',
-  //   component: AuthPageComponent,
-  //   resolve: {
-  //     authMode: AuthModeResolveService
-  //   }
-  // }
+  {
+    path: 'dashboard',
+    /**
+     * TODO: overthink: do we need lazy loading here? 🤔
+     */
+    loadChildren: () =>
+      import('./modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+    canActivate: [LoggedInGuard],
+  },
 ];
 
 @NgModule({

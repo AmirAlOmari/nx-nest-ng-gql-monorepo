@@ -1,0 +1,53 @@
+@import '../../../../../constants.scss';
+
+$routing-container-margin: 16px;
+$routing-container-margin-doubled: calc(#{$routing-container-margin} * 2);
+$routing-container-padding: 16px;
+$routing-container-padding-doubled: calc(#{$routing-container-padding} * 2);
+
+$content-min-height: calc(
+  100vh - #{$header-height} - #{$routing-container-margin}
+);
+
+.dashboard-page {
+  min-height: calc(100vh - $header-height);
+  width: 100%;
+
+  .drawer-container {
+    position: sticky;
+
+    .drawer {
+      padding: 20px;
+    }
+
+    .drawer-button {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 8px;
+
+      > * {
+        margin: 4px;
+      }
+
+      &__mat-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .content {
+    min-height: $content-min-height;
+
+    .routing-container {
+      margin: $routing-container-margin;
+      padding: $routing-container-padding;
+      min-height: calc(
+        #{$content-min-height} - #{$routing-container-margin} - #{$routing-container-padding-doubled}
+      );
+      border-radius: 12px;
+      box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+        0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    }
+  }
+}

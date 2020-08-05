@@ -1,0 +1,29 @@
+// Import library functions for theme creation.
+@import '~@angular/material/theming';
+
+// Include non-theme styles for core.
+@include mat-core();
+
+// Define a theme.
+$primary: mat-palette($mat-purple, 700, 500, 800);
+$accent: mat-palette($mat-green, A200, A100, A400);
+
+$theme: mat-dark-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+    ),
+  )
+);
+
+// Include all theme styles for the components.
+@include angular-material-theme($theme);
+
+// ---
+@import './app/modules/auth/pages/auth-page/auth-page.component.themed.scss';
+@import './app/modules/dashboard/pages/dashboard-page/dashboard-page.component.themed.scss';
+
+// Include theme styles for your custom components.
+@include auth-page-theme($theme);
+@include dashboard-page-theme($theme);

@@ -1,0 +1,37 @@
+<section class="dashboard-page">
+  <section class="header-container">
+    <frontend-dashboard-header
+      (menuClick)="onHeaderMenuClick()"
+    ></frontend-dashboard-header>
+  </section>
+
+  <mat-drawer-container class="drawer-container" autosize>
+    <mat-drawer #drawer class="drawer" mode="side" [opened]="drawerOpen">
+      <button
+        *ngFor="let drawerButton of drawerButtons"
+        class="drawer-button"
+        mat-button
+        (click)="onDrawerButtonClick(drawerButton)"
+      >
+        <mat-icon
+          *ngIf="drawerButton.matIconName"
+          class="drawer-button__mat-icon"
+          [inline]="true"
+        >
+          {{ drawerButton.matIconName }}</mat-icon
+        >
+
+        <span class="drawer-button__title">{{ drawerButton.title }}</span>
+      </button>
+    </mat-drawer>
+
+    <div class="content">
+      <section
+        class="routing-container"
+        [@routeAnimations]="prepareRoute(outlet)"
+      >
+        <router-outlet #outlet="outlet"></router-outlet>
+      </section>
+    </div>
+  </mat-drawer-container>
+</section>

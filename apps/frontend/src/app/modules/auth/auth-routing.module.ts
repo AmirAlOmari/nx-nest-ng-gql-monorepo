@@ -1,14 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthPageComponent } from './pages/auth-page/auth-page.component';
+import { LoginRouteQueryParams } from './enums/login-route-query-params/login-route-query-params.enum';
 import { AuthModeResolveService } from './services/auth-mode-resolve/auth-mode-resolve.service';
+import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: AuthPageComponent,
   },
+
+  /**
+   * @QueryParams `LoginRouteQueryParams`
+   */
   {
     path: 'login',
     component: AuthPageComponent,
@@ -16,6 +21,7 @@ const routes: Routes = [
       authMode: AuthModeResolveService,
     },
   },
+
   {
     path: 'register',
     component: AuthPageComponent,

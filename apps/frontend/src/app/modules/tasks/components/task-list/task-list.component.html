@@ -1,0 +1,76 @@
+<ng-container
+  *ngIf="{
+    loading: loading$ | async,
+    tasks: tasks$ | async,
+    errors: errors$ | async
+  } as obses"
+>
+  <mat-toolbar color="primary">
+    <span>Tasks list</span>
+    <span class="global-spacer"></span>
+    <button mat-mini-fab (click)="openCreateTaskDialog()">
+      <mat-icon>add_task</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <section class="progress-bar-container" [hidden]="!obses.loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </section>
+
+  <section class="task-list-container" *ngIf="obses.tasks">
+    <section class="no-tasks-container" *ngIf="!obses.tasks.length">
+      <span class="no-task-message">No tasks yet 😢</span>
+    </section>
+
+    <section class="task-container">
+      <mat-accordion multi>
+        <mat-expansion-panel *ngFor="let task of obses.tasks">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ task.name }}
+            </mat-panel-title>
+
+            <mat-panel-description
+              not-style="display: flex; justify-content: space-between;"
+            >
+              {{ task.date | date }}
+
+              <span class="global-spacer"></span>
+
+              <mat-icon *ngIf="task.completed">done</mat-icon>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <p style="white-space: pre;">{{ task.description }}</p>
+
+          <mat-action-row>
+            <button
+              mat-mini-fab
+              color="warn"
+              (click)="openRemoveTaskDialog(task)"
+            >
+              <mat-icon>delete_forever</mat-icon>
+            </button>
+
+            <button
+              mat-mini-fab
+              color="primary"
+              (click)="openUpdateTaskDialog(task)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+
+            <button
+              mat-mini-fab
+              color="accent"
+              (click)="completeTask(task)"
+              [disabled]="task.completed"
+            >
+              <mat-icon>done</mat-icon>
+            </button>
+          </mat-action-row>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </section>
+  </section>
+</ng-container>

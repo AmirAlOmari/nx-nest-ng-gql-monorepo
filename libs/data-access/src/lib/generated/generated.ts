@@ -27,6 +27,7 @@ export interface User {
 export interface LoginOutput {
   __typename?: 'LoginOutput';
   accessToken: Scalars['String'];
+  me: User;
 }
 
 export interface Task {
@@ -95,7 +96,7 @@ export interface CreateMyTaskInput {
 }
 
 export interface UpdateMyTaskInput {
-  name?: Maybe<Scalars['String']>;
+  name: Scalars['String'];
   description?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   _id: Scalars['ID'];
@@ -115,7 +116,12 @@ export type LoginMutationVariables = Exact<{
 }>;
 
 export type LoginMutation = { __typename?: 'Mutation' } & {
-  login: { __typename?: 'LoginOutput' } & Pick<LoginOutput, 'accessToken'>;
+  login: { __typename?: 'LoginOutput' } & Pick<LoginOutput, 'accessToken'> & {
+      me: { __typename?: 'User' } & Pick<
+        User,
+        '_id' | 'firstName' | 'lastName' | 'email'
+      >;
+    };
 };
 
 export type RegisterUserMutationVariables = Exact<{
@@ -191,6 +197,12 @@ export const LoginDocument = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       accessToken
+      me {
+        _id
+        firstName
+        lastName
+        email
+      }
     }
   }
 `;

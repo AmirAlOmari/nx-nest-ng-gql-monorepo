@@ -1,0 +1,74 @@
+// Import library functions for theme creation.
+@import '~@angular/material/theming';
+
+@mixin dashboard-page-color($config-or-theme) {
+  // Extract the color configuration in case a theme has been passed.
+  // This allows consumers to either pass a theme object or a color configuration.
+  $config: mat-get-color-config($config-or-theme);
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($config, primary);
+  $accent: map-get($config, accent);
+  $warn: map-get($config, warn);
+  $background: map-get($config, background);
+  $foreground: map-get($config, foreground);
+
+  // // Define any styles affected by the theme.
+  // .dashboard-page {
+  //   // Use mat-color to extract individual colors from a palette.
+  //   background-color: mat-color($background, background);
+  //   // border-color: mat-color($config, A400);
+  //   color: mat-color($foreground, text);
+
+  //   .content {
+  //     background-color: mat-color($background, dialog);
+
+  //     .be-message-container {
+  //       background-color: mat-color($foreground, divider);
+  //     }
+  //   }
+  // }
+
+  .dashboard-page {
+    .drawer-container {
+      .drawer {
+      }
+
+      .drawer-button {
+      }
+    }
+
+    .content {
+      .routing-container {
+        background-color: mat-color($background, selected-button);
+      }
+    }
+  }
+}
+
+@mixin dashboard-page-typography($config-or-theme) {
+  // Extract the typography configuration in case a theme has been passed.
+  $config: mat-get-typography-config($config-or-theme);
+
+  .dashboard-page {
+    font: {
+      family: mat-font-family($config, body-1);
+      size: mat-font-size($config, body-1);
+      weight: mat-font-weight($config, body-1);
+    }
+  }
+}
+
+@mixin dashboard-page-theme($theme) {
+  // Extracts the color and typography configurations from the theme.
+  $color: mat-get-color-config($theme);
+  $typography: mat-get-typography-config($theme);
+
+  // Do not generate styles if configurations for individual theming
+  // systems have been explicitly set to `null`.
+  @if $color != null {
+    @include dashboard-page-color($color);
+  }
+  @if $typography != null {
+    @include dashboard-page-typography($typography);
+  }
+}

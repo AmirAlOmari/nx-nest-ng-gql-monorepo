@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '../../../jwt/services/jwt/jwt.service';
 
 // Users module
+import { User } from '../../../users/models/user/user.model';
 import { UserService } from '../../../users/services/user/user.service';
 
 // Auth module
@@ -37,7 +38,10 @@ export class AuthService {
     const accessToken = await this.jwtService.signAsync({
       userId: foundUser._id,
     });
-    const result = { accessToken: accessToken };
+    const result = {
+      accessToken: accessToken,
+      me: foundUser.toObject() as User,
+    };
 
     return result;
   }
