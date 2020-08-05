@@ -1,8 +1,8 @@
 {
   "extends": "../../tslint.json",
   "rules": {
-    "directive-selector": [true, "attribute", "meepo", "camelCase"],
-    "component-selector": [true, "element", "meepo", "kebab-case"],
+    "directive-selector": [true, "attribute", "frontend", "camelCase"],
+    "component-selector": [true, "element", "frontend", "kebab-case"],
     "no-empty-interface": false
   },
   "linterOptions": {
