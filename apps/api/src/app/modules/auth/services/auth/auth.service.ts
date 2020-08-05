@@ -25,9 +25,8 @@ export class AuthService {
       throw await WrongCredentialsError.create();
     }
 
-    const hashedPassword = await this.hashPassword(password);
     const passwordVerified = await this.verifyPassword(
-      hashedPassword,
+      foundUser.password,
       password
     );
 
@@ -61,8 +60,8 @@ export class AuthService {
   //   return hashedPassword;
   // }
 
-  async hashPassword(inputPassword: string) {
-    const hashedPassword = await argon2.hash(inputPassword);
+  async hashPassword(password: string) {
+    const hashedPassword = await argon2.hash(password);
 
     return hashedPassword;
   }
