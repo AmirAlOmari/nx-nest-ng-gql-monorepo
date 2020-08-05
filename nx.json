@@ -14,18 +14,16 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
   "projects": {
-    "meepo": {
-      "tags": []
-    },
-    "meepo-e2e": {
-      "tags": [],
-      "implicitDependencies": ["meepo"]
-    },
     "api": {
       "tags": []
     },
@@ -34,7 +32,18 @@
     },
     "data-access": {
       "tags": [],
-      "implicitDependencies": ["api"]
+      "implicitDependencies": [
+        "api"
+      ]
+    },
+    "frontend": {
+      "tags": []
+    },
+    "frontend-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "frontend"
+      ]
     }
   },
   "affected": {

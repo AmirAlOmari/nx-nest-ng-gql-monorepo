@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'meepo',
+  name: 'frontend',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/apps/meepo',
+  coverageDirectory: '../../coverage/apps/frontend',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',

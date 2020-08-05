@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 import { Message } from '@linkedout/api-interfaces';
 
 @Component({
-  selector: 'meepo-root',
+  selector: 'frontend-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   hello$ = this.http.get<Message>('/api/hello');

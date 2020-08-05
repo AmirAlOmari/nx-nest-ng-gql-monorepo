@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   OnDestroy,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
@@ -11,10 +11,10 @@ import { takeUntil } from 'rxjs/operators';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
-  selector: 'meepo-login',
+  selector: 'frontend-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit, OnDestroy {
   constructor(public authService: AuthService, public fb: FormBuilder) {}
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     email: this.fb.control(null, [Validators.required, Validators.email]),
     password: this.fb.control(null, [
       Validators.required,
-      Validators.minLength(4)
-    ])
+      Validators.minLength(4),
+    ]),
   });
 
   submit() {
@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit, OnDestroy {
       .login(email, password)
       .pipe(takeUntil(this.ngDestroy$))
       .subscribe(
-        gqlResult => {
+        (gqlResult) => {
           console.log('login', gqlResult);
         },
-        error => {
+        (error) => {
           console.warn(error);
         }
       );
