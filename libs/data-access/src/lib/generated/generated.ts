@@ -2,8 +2,11 @@ import gql from 'graphql-tag';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
 /** All built-in and custom scalars, mapped to their actual values */
-export type Scalars = {
+export interface Scalars {
   ID: string;
   String: string;
   Boolean: boolean;
@@ -11,22 +14,22 @@ export type Scalars = {
   Float: number;
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
   DateTime: any;
-};
+}
 
-export type User = {
+export interface User {
   __typename?: 'User';
   _id: Scalars['ID'];
   email: Scalars['String'];
   firstName?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
-};
+}
 
-export type LoginOutput = {
+export interface LoginOutput {
   __typename?: 'LoginOutput';
   accessToken: Scalars['String'];
-};
+}
 
-export type Task = {
+export interface Task {
   __typename?: 'Task';
   _id: Scalars['ID'];
   user: User;
@@ -35,15 +38,15 @@ export type Task = {
   completed: Scalars['Boolean'];
   description?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['DateTime']>;
-};
+}
 
-export type Query = {
+export interface Query {
   __typename?: 'Query';
   getMyTasks: Array<Task>;
   getMyUser: User;
-};
+}
 
-export type Mutation = {
+export interface Mutation {
   __typename?: 'Mutation';
   login: LoginOutput;
   registerUser: User;
@@ -51,73 +54,73 @@ export type Mutation = {
   updateMyTask: Task;
   removeMyTask: Task;
   completeMyTask: Task;
-};
+}
 
-export type MutationLoginArgs = {
+export interface MutationLoginArgs {
   password: Scalars['String'];
   email: Scalars['String'];
-};
+}
 
-export type MutationRegisterUserArgs = {
+export interface MutationRegisterUserArgs {
   input: RegisterUserInput;
-};
+}
 
-export type MutationCreateMyTaskArgs = {
+export interface MutationCreateMyTaskArgs {
   input: CreateMyTaskInput;
-};
+}
 
-export type MutationUpdateMyTaskArgs = {
+export interface MutationUpdateMyTaskArgs {
   input: UpdateMyTaskInput;
-};
+}
 
-export type MutationRemoveMyTaskArgs = {
+export interface MutationRemoveMyTaskArgs {
   input: RemoveMyTaskInput;
-};
+}
 
-export type MutationCompleteMyTaskArgs = {
+export interface MutationCompleteMyTaskArgs {
   input: CompleteMyTaskInput;
-};
+}
 
-export type RegisterUserInput = {
+export interface RegisterUserInput {
   email: Scalars['String'];
   password: Scalars['String'];
   firstName?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
-};
+}
 
-export type CreateMyTaskInput = {
+export interface CreateMyTaskInput {
   name: Scalars['String'];
   description?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-};
+}
 
-export type UpdateMyTaskInput = {
+export interface UpdateMyTaskInput {
   name?: Maybe<Scalars['String']>;
   description?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   _id: Scalars['ID'];
-};
+}
 
-export type RemoveMyTaskInput = {
+export interface RemoveMyTaskInput {
   _id: Scalars['ID'];
-};
+}
 
-export type CompleteMyTaskInput = {
+export interface CompleteMyTaskInput {
   _id: Scalars['ID'];
-};
+}
 
-export type LoginMutationVariables = {
+export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
-};
+}>;
 
 export type LoginMutation = { __typename?: 'Mutation' } & {
   login: { __typename?: 'LoginOutput' } & Pick<LoginOutput, 'accessToken'>;
 };
 
-export type RegisterUserMutationVariables = {
+export type RegisterUserMutationVariables = Exact<{
   input: RegisterUserInput;
-};
+}>;
 
 export type RegisterUserMutation = { __typename?: 'Mutation' } & {
   registerUser: { __typename?: 'User' } & Pick<
@@ -126,7 +129,7 @@ export type RegisterUserMutation = { __typename?: 'Mutation' } & {
   >;
 };
 
-export type GetMyTasksQueryVariables = {};
+export type GetMyTasksQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetMyTasksQuery = { __typename?: 'Query' } & {
   getMyTasks: Array<
@@ -137,9 +140,9 @@ export type GetMyTasksQuery = { __typename?: 'Query' } & {
   >;
 };
 
-export type CreateMyTaskMutationVariables = {
+export type CreateMyTaskMutationVariables = Exact<{
   input: CreateMyTaskInput;
-};
+}>;
 
 export type CreateMyTaskMutation = { __typename?: 'Mutation' } & {
   createMyTask: { __typename?: 'Task' } & Pick<
@@ -148,9 +151,9 @@ export type CreateMyTaskMutation = { __typename?: 'Mutation' } & {
   >;
 };
 
-export type UpdateMyTaskMutationVariables = {
+export type UpdateMyTaskMutationVariables = Exact<{
   input: UpdateMyTaskInput;
-};
+}>;
 
 export type UpdateMyTaskMutation = { __typename?: 'Mutation' } & {
   updateMyTask: { __typename?: 'Task' } & Pick<
@@ -159,23 +162,23 @@ export type UpdateMyTaskMutation = { __typename?: 'Mutation' } & {
   >;
 };
 
-export type RemoveMyTaskMutationVariables = {
+export type RemoveMyTaskMutationVariables = Exact<{
   input: RemoveMyTaskInput;
-};
+}>;
 
 export type RemoveMyTaskMutation = { __typename?: 'Mutation' } & {
   removeMyTask: { __typename?: 'Task' } & Pick<Task, '_id'>;
 };
 
-export type CompleteMyTaskMutationVariables = {
+export type CompleteMyTaskMutationVariables = Exact<{
   input: CompleteMyTaskInput;
-};
+}>;
 
 export type CompleteMyTaskMutation = { __typename?: 'Mutation' } & {
   completeMyTask: { __typename?: 'Task' } & Pick<Task, '_id'>;
 };
 
-export type GetMyUserQueryVariables = {};
+export type GetMyUserQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetMyUserQuery = { __typename?: 'Query' } & {
   getMyUser: { __typename?: 'User' } & Pick<
