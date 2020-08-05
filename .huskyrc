@@ -1,6 +1,6 @@
 {
   "hooks": {
-    "pre-commit": "./scripts/api-generate-gql-schema.sh",
+    "pre-commit": "yarn run check-linter-and-prettier",
     "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
   }
 }
