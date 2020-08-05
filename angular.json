@@ -120,7 +120,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx graphql-codegen --config libs/data-access/codegen.yml"
+                "command": "yarn run graphql-codegen -c libs/data-access/codegen.yml -o && yarn run nx lint data-access --fix --skip-nx-cache && yarn run nx format:write --projects=data-access --skip-nx-cache"
               }
             ]
           }

@@ -29,7 +29,8 @@
     "conventional-recommended-bump": "conventional-recommended-bump",
     "conventional-recommended-bump:local": "conventional-recommended-bump --config ./tools/cc-configs/local/config.js",
     "release:bump:local": "standard-version --release-as $(yarn run --silent conventional-recommended-bump:local)",
-    "check-linter-and-prettier": "nx run-many --target=lint --parallel --all && prettier -c ."
+    "check-linter-and-prettier": "nx run-many --target=lint --parallel --all && nx format:check --all",
+    "write-linter-and-prettier": "nx run-many --target=lint --parallel --all --fix && nx format:write --all"
   },
   "private": true,
   "dependencies": {
