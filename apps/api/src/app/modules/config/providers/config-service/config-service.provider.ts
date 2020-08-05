@@ -9,5 +9,5 @@ export const configServiceProvider: Provider = {
     configService.init();
 
     return configService;
-  }
+  },
 };

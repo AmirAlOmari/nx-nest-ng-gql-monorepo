@@ -14,6 +14,6 @@ import { GqlAuthGuard } from './guards/gql-auth/gql-auth.guard';
 @Module({
   imports: [JwtModule, UsersModule],
   providers: [AuthService, AuthResolver, GqlAuthGuard],
-  exports: [AuthService, GqlAuthGuard]
+  exports: [AuthService, GqlAuthGuard],
 })
 export class AuthModule {}

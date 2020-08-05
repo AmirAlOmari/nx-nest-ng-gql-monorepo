@@ -8,6 +8,6 @@ import { JwtService } from './services/jwt/jwt.service';
 @Module({
   imports: [ConfigModule],
   providers: [JwtService, jwtOptionsProvider],
-  exports: [JwtService]
+  exports: [JwtService],
 })
 export class JwtModule {}

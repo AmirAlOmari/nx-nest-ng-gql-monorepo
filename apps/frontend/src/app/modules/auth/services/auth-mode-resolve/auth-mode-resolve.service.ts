@@ -3,14 +3,14 @@ import {
   Router,
   Resolve,
   RouterStateSnapshot,
-  ActivatedRouteSnapshot
+  ActivatedRouteSnapshot,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 
 import { AuthMode } from '../../enums/auth-mode/auth-mode.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthModeResolveService implements Resolve<AuthMode> {
   determineAuthModeByRoute(route: ActivatedRouteSnapshot): AuthMode {

@@ -10,6 +10,6 @@ import { JwtModule } from '../jwt/jwt.module';
 import { UsersModule } from '../users/users.module';
 
 @Module({
-  imports: [ConfigModule, JwtModule, UsersModule]
+  imports: [ConfigModule, JwtModule, UsersModule],
 })
 export class SharedModule {}

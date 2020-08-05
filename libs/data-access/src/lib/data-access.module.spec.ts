@@ -4,7 +4,7 @@ import { DataAccessModule } from './data-access.module';
 describe('DataAccessModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DataAccessModule]
+      imports: [DataAccessModule],
     }).compileComponents();
   }));
 

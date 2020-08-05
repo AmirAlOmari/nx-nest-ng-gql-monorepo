@@ -9,7 +9,7 @@ import { LoginGQL, LoginMutation } from '@linkedout/data-access';
 import { AccessTokenService } from '../access-token/access-token.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService implements OnDestroy {
   constructor(
@@ -22,17 +22,17 @@ export class AuthService implements OnDestroy {
   login(email: string, password: string) {
     return from(this.isLoggedIn()).pipe(
       // TODO: overthink, is it the clearest way to provide _optimistic_ response
-      switchMap(isLoggedIn =>
+      switchMap((isLoggedIn) =>
         isLoggedIn
           ? from(this.accessTokenService.retrieveAccessToken()).pipe(
-              map(accessToken =>
+              map((accessToken) =>
                 this.__fakeAppoloQueryResult<LoginMutation>({
-                  login: { accessToken }
+                  login: { accessToken },
                 })
               )
             )
           : this.loginGQL.mutate({ email, password }).pipe(
-              tap(gqlResult => {
+              tap((gqlResult) => {
                 if (!gqlResult?.data) {
                   return;
                 }
@@ -77,7 +77,7 @@ export class AuthService implements OnDestroy {
       errors: [],
       loading: false,
       networkStatus: NetworkStatus.ready,
-      stale: false
+      stale: false,
     };
   }
 }

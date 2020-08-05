@@ -3,7 +3,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
 import { mergeMap, map } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { mergeMap, map } from 'rxjs/operators';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthInterceptor implements HttpInterceptor {
   constructor(public authService: AuthService) {}
@@ -21,16 +21,16 @@ export class AuthInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
     return from(this.authService.createHttpAuthHeader()).pipe(
-      map(httpAuthHeader =>
+      map((httpAuthHeader) =>
         httpAuthHeader
           ? originalRequest.clone({
               setHeaders: {
-                Authorization: httpAuthHeader
-              }
+                Authorization: httpAuthHeader,
+              },
             })
           : originalRequest
       ),
-      mergeMap(request => next.handle(request))
+      mergeMap((request) => next.handle(request))
     );
   }
 }

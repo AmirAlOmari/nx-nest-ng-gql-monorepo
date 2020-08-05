@@ -17,9 +17,9 @@ import { AppRoutingModule } from './app-routing.module';
     GraphQLModule,
     DataAccessModule,
     StoreModule.forRoot({}, {}),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

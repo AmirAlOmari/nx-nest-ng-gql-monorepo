@@ -1,7 +1,7 @@
-import { Environment } from "./environment.interface";
+import { Environment } from './environment.interface';
 
 export const environment: Environment = {
   production: true,
 
-  serverUrl: 'http://localhost:3333/'
+  serverUrl: 'http://localhost:3333/',
 };

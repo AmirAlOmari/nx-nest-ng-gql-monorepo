@@ -14,7 +14,7 @@ import { WrongCredentialsError } from '../../errors/wrong-credentials/wrong-cred
 export class AuthResolver {
   constructor(public authService: AuthService) {}
 
-  @Mutation(returns => LoginOutput)
+  @Mutation((returns) => LoginOutput)
   async login(
     @Args('email') email: string,
     @Args('password') password: string
@@ -32,7 +32,7 @@ export class AuthResolver {
     }
   }
 
-  @Mutation(returns => UserObjectType)
+  @Mutation((returns) => UserObjectType)
   async registerUser(@Args('input') input: RegisterUserInput) {
     return await this.authService.registerUser(input);
   }

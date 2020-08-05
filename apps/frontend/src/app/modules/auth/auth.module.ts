@@ -20,8 +20,8 @@ import { AuthPageComponent } from './pages/auth-page/auth-page.component';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class AuthModule {}

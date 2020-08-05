@@ -24,9 +24,9 @@ import { TasksResolver } from './resolvers/tasks/tasks.resolver';
     SharedModule,
     JwtModule,
     UsersModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [TaskService, TasksResolver],
-  exports: [TaskService]
+  exports: [TaskService],
 })
 export class TasksModule {}

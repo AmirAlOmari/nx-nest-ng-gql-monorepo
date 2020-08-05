@@ -4,7 +4,7 @@ import { LOCAL_STORAGE, WebStorageService } from 'ngx-webstorage-service';
 import { ATStorageKey } from '../../constants/at-storage-key/at-storage-key.const';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccessTokenService {
   constructor(

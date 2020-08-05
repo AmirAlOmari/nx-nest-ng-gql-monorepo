@@ -13,11 +13,11 @@ import { User } from '../../models/user/user.model';
 import { UserService } from '../../services/user/user.service';
 import { User as UserObjectType } from '../../obj-types/user/user.obj-type';
 
-@Resolver(of => UserObjectType)
+@Resolver((of) => UserObjectType)
 export class UsersResolver {
   constructor(public userService: UserService) {}
 
-  @Query(returns => UserObjectType)
+  @Query((returns) => UserObjectType)
   @UseGuards(GqlAuthGuard)
   async getMyUser(@GqlUser() user: DocumentType<User>) {
     return user;

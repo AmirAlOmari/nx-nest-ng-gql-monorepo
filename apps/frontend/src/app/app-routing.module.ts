@@ -8,13 +8,13 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'auth'
+    redirectTo: 'auth',
   },
   {
     path: 'auth',
     loadChildren: () =>
-      import('./modules/auth/auth.module').then(m => m.AuthModule)
-  }
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
   // {
   //   path: 'login',
   //   component: AuthPageComponent,
@@ -33,6 +33,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
