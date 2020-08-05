@@ -44,3 +44,10 @@ Thumbs.db
 
 # Yarn cache
 /.ycache
+
+#######
+# OWN #
+#######
+
+# Changelog
+/CHANGELOG.md
