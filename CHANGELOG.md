@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.1](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/0.0.0...0.0.1) (2020-08-05)
+
+
+### Others
+
+* **cc:** provide tmp cc scopes for vscode ([68d2c3a](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/68d2c3a4a9fa54f8263ad0bffe6950e874031830))
+
 ## 0.0.0 (2020-08-05)
 
 
