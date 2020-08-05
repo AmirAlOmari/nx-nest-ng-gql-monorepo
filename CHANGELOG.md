@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.2](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/0.0.1...0.0.2) (2020-08-05)
+
+
+### Refactor
+
+* rename meepo to frontend ([05cd7ee](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/05cd7ee960995e935976639a54ba6705ae80017e))
+* rename meepo-e2e to frontend-e2e ([1f29807](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/1f29807c042fad58c945d1c7dc550ad3f44980d7))
+* replace meepo entries with frontend ([c5589dc](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/c5589dc63538644a35df9090eb0ec4911538b27e))
+
+
+### Build
+
+* data-access:generate lint and prettify project ([93f883e](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/93f883e0211899b464541cd8d29483b26cd796c1))
+
+
+### Style
+
+* data-access tsling do not ignore generated ([4e8c34d](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/4e8c34d5856d330caa15f7582922483f2ac7de12))
+* prettify whole workspace ([edc0fbd](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/edc0fbdd6533f23c93358b458ea23b81518646a6))
+
+
+### Others
+
+* add check-linter-and-prettier npm script ([3042def](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/3042def510007d9b2e36be5e0e4c4bfe3f7333b7))
+* add write-linter-and-prettier npm script ([2d13953](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/2d139533d2e96179d960461ed82fcca7e57d180f))
+* rebuild generated ([6e97813](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/6e978139ca67e82d868d41b8bc9dc54c2f4e428c))
+* update generate-all-gql script to use yarn ([3597946](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/3597946142492284cd5f1e9dc2cfa30239cc02e5))
+* update pre-commit hook cmd ([9c4af4e](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/9c4af4e6ec93e09f776a6136330b9f1aae77a73f))
+* **deps-cfg:** prettier ignore CHANGELOG ([2067ed4](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/2067ed45dbda1a67900e096a8d65f66f2c38e28d))
+
 ### [0.0.1](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/0.0.0...0.0.1) (2020-08-05)
 
 
