@@ -24,12 +24,6 @@
     }
   },
   "projects": {
-    "meepo-e2e": {
-      "tags": [],
-      "implicitDependencies": [
-        "frontend"
-      ]
-    },
     "api": {
       "tags": []
     },
@@ -44,6 +38,12 @@
     },
     "frontend": {
       "tags": []
+    },
+    "frontend-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "frontend"
+      ]
     }
   },
   "affected": {
