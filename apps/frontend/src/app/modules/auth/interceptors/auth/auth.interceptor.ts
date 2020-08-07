@@ -22,13 +22,13 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     return from(this.authService.createHttpAuthHeader()).pipe(
       map((httpAuthHeader) =>
-        !httpAuthHeader
-          ? originalRequest
-          : originalRequest.clone({
+        httpAuthHeader
+          ? originalRequest.clone({
               setHeaders: {
                 Authorization: httpAuthHeader,
               },
             })
+          : originalRequest
       ),
       mergeMap((request) => next.handle(request))
     );
