@@ -55,7 +55,6 @@ export class CreateTaskDialogComponent implements OnInit, OnDestroy {
     this.createMyTaskGQL
       .mutate({ input }, { refetchQueries: [{ query: GetMyTasksDocument }] })
       .pipe(takeUntil(this.ngDestroy$))
-      .pipe(takeUntil(this.ngDestroy$))
       .subscribe(
         (result) => {
           console.log(result);
