@@ -36,11 +36,11 @@ spec:
                 fieldRef:
                   fieldPath: status.podIP
             - name: PORT
-              value: "3333"
+              value: "3001"
             - name: HOSTNAME
               value: "0.0.0.0"
             - name: DATABASE_URI
               value: "mongodb://mongo-0.mongo:27017/staging"
           ports:
-            - containerPort: 3333
+            - containerPort: 3001
               name: linkedout-api
