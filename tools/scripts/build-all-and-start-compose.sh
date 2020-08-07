@@ -5,8 +5,8 @@ IMAGE=${2:-"linkedout"}
 
 mkdir -p ./tmp/$IMAGE
 
-sh ./tools/scripts/build-api-image.sh $TAG $IMAGE 2> ./tmp/$IMAGE:$TAG-api-build.error.log > ./tmp/$IMAGE:$TAG-api-build.log &
-sh ./tools/scripts/build-frontend-image.sh $TAG $IMAGE 2> ./tmp/$IMAGE:$TAG-frontend-build.error.log > ./tmp/$IMAGE:$TAG-frontend-build.log &
+sh ./tools/scripts/build-api-image.sh $TAG $IMAGE 2> ./tmp/$IMAGE:$TAG-api-build.log > ./tmp/$IMAGE:$TAG-api-build.log &
+sh ./tools/scripts/build-frontend-image.sh $TAG $IMAGE 2> ./tmp/$IMAGE:$TAG-frontend-build.log > ./tmp/$IMAGE:$TAG-frontend-build.log &
 
 wait
 
