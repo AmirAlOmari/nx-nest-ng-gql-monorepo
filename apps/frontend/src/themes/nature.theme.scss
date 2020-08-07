@@ -1,0 +1,14 @@
+// Define a theme
+$nature-primary: mat-palette($mat-brown, 700, 300, 900);
+$nature-accent: mat-palette($mat-deep-purple, 300);
+$nature-warn: mat-palette($mat-red, 600);
+
+$nature-theme: mat-light-theme(
+  (
+    color: (
+      primary: $nature-primary,
+      accent: $nature-accent,
+      warn: $nature-warn,
+    ),
+  )
+);

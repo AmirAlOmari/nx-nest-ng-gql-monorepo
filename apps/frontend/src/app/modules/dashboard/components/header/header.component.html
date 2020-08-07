@@ -1,0 +1,34 @@
+<section class="header">
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="menuClick.next()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="title">Ng App</span>
+
+    <span class="global-spacer"></span>
+
+    <ng-container *ngIf="{ loggedUser: loggedUser$ | async } as obses">
+      <ng-container *ngIf="!obses.loggedUser">
+        <mat-spinner></mat-spinner>
+      </ng-container>
+
+      <ng-container *ngIf="obses.loggedUser"
+        ><span *ngIf="obses.loggedUser.firstName && obses.loggedUser.lastName">
+          Hi, {{ obses.loggedUser.firstName }}
+          {{ obses.loggedUser.lastName }} 👋</span
+        >
+
+        <span *ngIf="!obses.loggedUser.firstName || !obses.loggedUser.lastName">
+          Hi, {{ obses.loggedUser.email }} 👋</span
+        ></ng-container
+      >
+    </ng-container>
+
+    <frontend-theme-picker></frontend-theme-picker>
+
+    <button mat-icon-button matTooltip="Logout" (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+</section>

@@ -20,7 +20,7 @@ export class ConfigService {
     const givenConfig = process.env;
     const configDefaultKeys = Object.keys(this.configDefault);
 
-    configDefaultKeys.forEach(configDefaultKey => {
+    configDefaultKeys.forEach((configDefaultKey) => {
       if (configDefaultKey in givenConfig) {
         this.config[configDefaultKey] = givenConfig[configDefaultKey];
       }

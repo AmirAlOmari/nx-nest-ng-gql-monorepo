@@ -4,7 +4,7 @@ import { User } from '../../../users/obj-types/user/user.obj-type';
 
 @ObjectType()
 export class Task {
-  @Field(type => ID)
+  @Field((type) => ID)
   _id: string;
 
   @Field()

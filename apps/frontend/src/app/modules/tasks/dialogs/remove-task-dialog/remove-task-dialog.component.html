@@ -1,0 +1,28 @@
+<ng-container *ngIf="{ isSubmitting: isSubmitting$ | async } as obses">
+  <h1 mat-dialog-title>Remove task</h1>
+  <div mat-dialog-content>
+    Are you sure you want to remove task "{{ data.task.name }}"?
+  </div>
+  <div mat-dialog-actions>
+    <button
+      mat-raised-button
+      color="warn"
+      [disabled]="obses.isSubmitting"
+      (click)="submit()"
+    >
+      <ng-container
+        *ngTemplateOutlet="!obses.isSubmitting ? regularTmpl : submittingTmpl"
+      ></ng-container>
+
+      <ng-template #regularTmpl>Remove</ng-template>
+
+      <ng-template #submittingTmpl>
+        <mat-spinner
+          style="margin: 10px 10px;"
+          [diameter]="18"
+          [color]="'warn'"
+        ></mat-spinner>
+      </ng-template>
+    </button>
+  </div>
+</ng-container>

@@ -6,7 +6,9 @@ import { User } from '../../../users/models/user/user.model';
 
 export const GqlUser = createParamDecorator(
   (data: unknown, context: ExecutionContext) => {
-    const user: DocumentType<User> = GqlExecutionContext.create(context).getContext().req.user;
+    const user: DocumentType<User> = GqlExecutionContext.create(
+      context
+    ).getContext().req.user;
 
     if (!user) {
       throw new Error('Unexpected');

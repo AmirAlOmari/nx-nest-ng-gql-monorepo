@@ -6,9 +6,9 @@
       "dependencies": "*",
       "devDependencies": "*"
     },
-    "tsconfig.json": "*",
     "tslint.json": "*",
-    "nx.json": "*"
+    "nx.json": "*",
+    "tsconfig.base.json": "*"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -19,13 +19,6 @@
     }
   },
   "projects": {
-    "meepo": {
-      "tags": []
-    },
-    "meepo-e2e": {
-      "tags": [],
-      "implicitDependencies": ["meepo"]
-    },
     "api": {
       "tags": []
     },
@@ -35,6 +28,16 @@
     "data-access": {
       "tags": [],
       "implicitDependencies": ["api"]
+    },
+    "frontend": {
+      "tags": []
+    },
+    "frontend-e2e": {
+      "tags": [],
+      "implicitDependencies": ["frontend"]
     }
+  },
+  "affected": {
+    "defaultBase": "master"
   }
 }

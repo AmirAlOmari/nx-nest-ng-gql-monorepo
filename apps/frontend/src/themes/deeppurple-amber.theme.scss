@@ -1,0 +1,12 @@
+// Define a theme.
+$deeppurple-amber-primary: mat-palette($mat-deep-purple);
+$deeppurple-amber-accent: mat-palette($mat-amber, A200, A100, A400);
+
+$deeppurple-amber-theme: mat-light-theme(
+  (
+    color: (
+      primary: $deeppurple-amber-primary,
+      accent: $deeppurple-amber-accent,
+    ),
+  )
+);

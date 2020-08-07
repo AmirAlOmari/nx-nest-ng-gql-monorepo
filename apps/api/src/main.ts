@@ -1,20 +1,30 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-import { NestFactory } from '@nestjs/core';
+import { Logger } from '@nestjs/common';
+import { NestFactory, HttpAdapterHost } from '@nestjs/core';
 
 import { ConfigService } from './app/modules/config/services/config/config.service';
+import { LoggerService } from './app/modules/common/services/logger/logger.service';
+
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const configService = app.get(ConfigService);
-  const port = configService.get('PORT');
-  const hostname = configService.get('HOSTNAME');
-  await app.listen(port, hostname, () => {
-    console.log(`Listening at http://${hostname}:${port}`);
-  });
+
+  // Eject app providers
+  const { httpServer } = await app.get(HttpAdapterHost);
+  const cs = await app.get(ConfigService);
+  const ls = await app.resolve(LoggerService);
+
+  // Setup ejected providers
+  ls.setContext('bootstrap()');
+
+  // Define needed constants
+  const hostname = cs.get('HOSTNAME');
+  const port = cs.get('PORT');
+
+  // Start the server
+  await app.listen(port, hostname);
+
+  ls.log(`Listening on ${hostname}:${port}`);
 }
 
 bootstrap();

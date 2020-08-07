@@ -12,7 +12,7 @@ function _findResolversRec(
 ) {
   const entries = fs.readdirSync(currentDirPath);
 
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     const entryPath = path.join(currentDirPath, entry);
     const entryStat = fs.statSync(entryPath);
 

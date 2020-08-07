@@ -2,8 +2,11 @@ import gql from 'graphql-tag';
 import { Injectable } from '@angular/core';
 import * as Apollo from 'apollo-angular';
 export type Maybe<T> = T | null;
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
 /** All built-in and custom scalars, mapped to their actual values */
-export type Scalars = {
+export interface Scalars {
   ID: string;
   String: string;
   Boolean: boolean;
@@ -11,25 +14,24 @@ export type Scalars = {
   Float: number;
   /** A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format. */
   DateTime: any;
-};
+}
 
-
-
-export type User = {
-   __typename?: 'User';
+export interface User {
+  __typename?: 'User';
   _id: Scalars['ID'];
   email: Scalars['String'];
   firstName?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
-};
+}
 
-export type LoginOutput = {
-   __typename?: 'LoginOutput';
+export interface LoginOutput {
+  __typename?: 'LoginOutput';
   accessToken: Scalars['String'];
-};
+  me: User;
+}
 
-export type Task = {
-   __typename?: 'Task';
+export interface Task {
+  __typename?: 'Task';
   _id: Scalars['ID'];
   user: User;
   userId: Scalars['String'];
@@ -37,320 +39,317 @@ export type Task = {
   completed: Scalars['Boolean'];
   description?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['DateTime']>;
-};
+}
 
-
-export type Query = {
-   __typename?: 'Query';
+export interface Query {
+  __typename?: 'Query';
   getMyTasks: Array<Task>;
   getMyUser: User;
-};
+}
 
-export type Mutation = {
-   __typename?: 'Mutation';
+export interface Mutation {
+  __typename?: 'Mutation';
   login: LoginOutput;
   registerUser: User;
   createMyTask: Task;
   updateMyTask: Task;
   removeMyTask: Task;
   completeMyTask: Task;
-};
+}
 
-
-export type MutationLoginArgs = {
+export interface MutationLoginArgs {
   password: Scalars['String'];
   email: Scalars['String'];
-};
+}
 
-
-export type MutationRegisterUserArgs = {
+export interface MutationRegisterUserArgs {
   input: RegisterUserInput;
-};
+}
 
-
-export type MutationCreateMyTaskArgs = {
+export interface MutationCreateMyTaskArgs {
   input: CreateMyTaskInput;
-};
+}
 
-
-export type MutationUpdateMyTaskArgs = {
+export interface MutationUpdateMyTaskArgs {
   input: UpdateMyTaskInput;
-};
+}
 
-
-export type MutationRemoveMyTaskArgs = {
+export interface MutationRemoveMyTaskArgs {
   input: RemoveMyTaskInput;
-};
+}
 
-
-export type MutationCompleteMyTaskArgs = {
+export interface MutationCompleteMyTaskArgs {
   input: CompleteMyTaskInput;
-};
+}
 
-export type RegisterUserInput = {
+export interface RegisterUserInput {
   email: Scalars['String'];
   password: Scalars['String'];
   firstName?: Maybe<Scalars['String']>;
   lastName?: Maybe<Scalars['String']>;
-};
+}
 
-export type CreateMyTaskInput = {
+export interface CreateMyTaskInput {
   name: Scalars['String'];
   description?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
-};
+}
 
-export type UpdateMyTaskInput = {
-  name?: Maybe<Scalars['String']>;
+export interface UpdateMyTaskInput {
+  name: Scalars['String'];
   description?: Maybe<Scalars['String']>;
   date?: Maybe<Scalars['String']>;
   _id: Scalars['ID'];
-};
+}
 
-export type RemoveMyTaskInput = {
+export interface RemoveMyTaskInput {
   _id: Scalars['ID'];
-};
+}
 
-export type CompleteMyTaskInput = {
+export interface CompleteMyTaskInput {
   _id: Scalars['ID'];
-};
+}
 
-export type LoginMutationVariables = {
+export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
+}>;
+
+export type LoginMutation = { __typename?: 'Mutation' } & {
+  login: { __typename?: 'LoginOutput' } & Pick<LoginOutput, 'accessToken'> & {
+      me: { __typename?: 'User' } & Pick<
+        User,
+        '_id' | 'firstName' | 'lastName' | 'email'
+      >;
+    };
 };
 
-
-export type LoginMutation = (
-  { __typename?: 'Mutation' }
-  & { login: (
-    { __typename?: 'LoginOutput' }
-    & Pick<LoginOutput, 'accessToken'>
-  ) }
-);
-
-export type RegisterUserMutationVariables = {
+export type RegisterUserMutationVariables = Exact<{
   input: RegisterUserInput;
+}>;
+
+export type RegisterUserMutation = { __typename?: 'Mutation' } & {
+  registerUser: { __typename?: 'User' } & Pick<
+    User,
+    '_id' | 'email' | 'firstName' | 'lastName'
+  >;
 };
 
+export type GetMyTasksQueryVariables = Exact<{ [key: string]: never }>;
 
-export type RegisterUserMutation = (
-  { __typename?: 'Mutation' }
-  & { registerUser: (
-    { __typename?: 'User' }
-    & Pick<User, '_id' | 'email' | 'firstName' | 'lastName'>
-  ) }
-);
+export type GetMyTasksQuery = { __typename?: 'Query' } & {
+  getMyTasks: Array<
+    { __typename?: 'Task' } & Pick<
+      Task,
+      '_id' | 'name' | 'description' | 'completed' | 'date'
+    >
+  >;
+};
 
-export type GetMyTasksQueryVariables = {};
-
-
-export type GetMyTasksQuery = (
-  { __typename?: 'Query' }
-  & { getMyTasks: Array<(
-    { __typename?: 'Task' }
-    & Pick<Task, '_id' | 'name' | 'description' | 'completed' | 'date'>
-  )> }
-);
-
-export type CreateMyTaskMutationVariables = {
+export type CreateMyTaskMutationVariables = Exact<{
   input: CreateMyTaskInput;
+}>;
+
+export type CreateMyTaskMutation = { __typename?: 'Mutation' } & {
+  createMyTask: { __typename?: 'Task' } & Pick<
+    Task,
+    '_id' | 'name' | 'completed' | 'description' | 'date'
+  >;
 };
 
-
-export type CreateMyTaskMutation = (
-  { __typename?: 'Mutation' }
-  & { createMyTask: (
-    { __typename?: 'Task' }
-    & Pick<Task, '_id' | 'name' | 'completed' | 'description' | 'date'>
-  ) }
-);
-
-export type UpdateMyTaskMutationVariables = {
+export type UpdateMyTaskMutationVariables = Exact<{
   input: UpdateMyTaskInput;
+}>;
+
+export type UpdateMyTaskMutation = { __typename?: 'Mutation' } & {
+  updateMyTask: { __typename?: 'Task' } & Pick<
+    Task,
+    '_id' | 'name' | 'completed' | 'description' | 'date'
+  >;
 };
 
-
-export type UpdateMyTaskMutation = (
-  { __typename?: 'Mutation' }
-  & { updateMyTask: (
-    { __typename?: 'Task' }
-    & Pick<Task, '_id' | 'name' | 'completed' | 'description' | 'date'>
-  ) }
-);
-
-export type RemoveMyTaskMutationVariables = {
+export type RemoveMyTaskMutationVariables = Exact<{
   input: RemoveMyTaskInput;
+}>;
+
+export type RemoveMyTaskMutation = { __typename?: 'Mutation' } & {
+  removeMyTask: { __typename?: 'Task' } & Pick<Task, '_id'>;
 };
 
-
-export type RemoveMyTaskMutation = (
-  { __typename?: 'Mutation' }
-  & { removeMyTask: (
-    { __typename?: 'Task' }
-    & Pick<Task, '_id'>
-  ) }
-);
-
-export type CompleteMyTaskMutationVariables = {
+export type CompleteMyTaskMutationVariables = Exact<{
   input: CompleteMyTaskInput;
+}>;
+
+export type CompleteMyTaskMutation = { __typename?: 'Mutation' } & {
+  completeMyTask: { __typename?: 'Task' } & Pick<Task, '_id'>;
 };
 
+export type GetMyUserQueryVariables = Exact<{ [key: string]: never }>;
 
-export type CompleteMyTaskMutation = (
-  { __typename?: 'Mutation' }
-  & { completeMyTask: (
-    { __typename?: 'Task' }
-    & Pick<Task, '_id'>
-  ) }
-);
-
-export type GetMyUserQueryVariables = {};
-
-
-export type GetMyUserQuery = (
-  { __typename?: 'Query' }
-  & { getMyUser: (
-    { __typename?: 'User' }
-    & Pick<User, '_id' | 'email' | 'firstName' | 'lastName'>
-  ) }
-);
+export type GetMyUserQuery = { __typename?: 'Query' } & {
+  getMyUser: { __typename?: 'User' } & Pick<
+    User,
+    '_id' | 'email' | 'firstName' | 'lastName'
+  >;
+};
 
 export const LoginDocument = gql`
-    mutation login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-    accessToken
+  mutation login($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      accessToken
+      me {
+        _id
+        firstName
+        lastName
+        email
+      }
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class LoginGQL extends Apollo.Mutation<LoginMutation, LoginMutationVariables> {
-    document = LoginDocument;
-    
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class LoginGQL extends Apollo.Mutation<
+  LoginMutation,
+  LoginMutationVariables
+> {
+  document = LoginDocument;
+}
 export const RegisterUserDocument = gql`
-    mutation registerUser($input: RegisterUserInput!) {
-  registerUser(input: $input) {
-    _id
-    email
-    firstName
-    lastName
+  mutation registerUser($input: RegisterUserInput!) {
+    registerUser(input: $input) {
+      _id
+      email
+      firstName
+      lastName
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class RegisterUserGQL extends Apollo.Mutation<RegisterUserMutation, RegisterUserMutationVariables> {
-    document = RegisterUserDocument;
-    
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class RegisterUserGQL extends Apollo.Mutation<
+  RegisterUserMutation,
+  RegisterUserMutationVariables
+> {
+  document = RegisterUserDocument;
+}
 export const GetMyTasksDocument = gql`
-    query getMyTasks {
-  getMyTasks {
-    _id
-    name
-    description
-    completed
-    date
+  query getMyTasks {
+    getMyTasks {
+      _id
+      name
+      description
+      completed
+      date
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetMyTasksGQL extends Apollo.Query<GetMyTasksQuery, GetMyTasksQueryVariables> {
-    document = GetMyTasksDocument;
-    
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class GetMyTasksGQL extends Apollo.Query<
+  GetMyTasksQuery,
+  GetMyTasksQueryVariables
+> {
+  document = GetMyTasksDocument;
+}
 export const CreateMyTaskDocument = gql`
-    mutation createMyTask($input: CreateMyTaskInput!) {
-  createMyTask(input: $input) {
-    _id
-    name
-    completed
-    description
-    date
+  mutation createMyTask($input: CreateMyTaskInput!) {
+    createMyTask(input: $input) {
+      _id
+      name
+      completed
+      description
+      date
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class CreateMyTaskGQL extends Apollo.Mutation<CreateMyTaskMutation, CreateMyTaskMutationVariables> {
-    document = CreateMyTaskDocument;
-    
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class CreateMyTaskGQL extends Apollo.Mutation<
+  CreateMyTaskMutation,
+  CreateMyTaskMutationVariables
+> {
+  document = CreateMyTaskDocument;
+}
 export const UpdateMyTaskDocument = gql`
-    mutation updateMyTask($input: UpdateMyTaskInput!) {
-  updateMyTask(input: $input) {
-    _id
-    name
-    completed
-    description
-    date
+  mutation updateMyTask($input: UpdateMyTaskInput!) {
+    updateMyTask(input: $input) {
+      _id
+      name
+      completed
+      description
+      date
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class UpdateMyTaskGQL extends Apollo.Mutation<UpdateMyTaskMutation, UpdateMyTaskMutationVariables> {
-    document = UpdateMyTaskDocument;
-    
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class UpdateMyTaskGQL extends Apollo.Mutation<
+  UpdateMyTaskMutation,
+  UpdateMyTaskMutationVariables
+> {
+  document = UpdateMyTaskDocument;
+}
 export const RemoveMyTaskDocument = gql`
-    mutation removeMyTask($input: RemoveMyTaskInput!) {
-  removeMyTask(input: $input) {
-    _id
+  mutation removeMyTask($input: RemoveMyTaskInput!) {
+    removeMyTask(input: $input) {
+      _id
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class RemoveMyTaskGQL extends Apollo.Mutation<RemoveMyTaskMutation, RemoveMyTaskMutationVariables> {
-    document = RemoveMyTaskDocument;
-    
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class RemoveMyTaskGQL extends Apollo.Mutation<
+  RemoveMyTaskMutation,
+  RemoveMyTaskMutationVariables
+> {
+  document = RemoveMyTaskDocument;
+}
 export const CompleteMyTaskDocument = gql`
-    mutation completeMyTask($input: CompleteMyTaskInput!) {
-  completeMyTask(input: $input) {
-    _id
+  mutation completeMyTask($input: CompleteMyTaskInput!) {
+    completeMyTask(input: $input) {
+      _id
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class CompleteMyTaskGQL extends Apollo.Mutation<CompleteMyTaskMutation, CompleteMyTaskMutationVariables> {
-    document = CompleteMyTaskDocument;
-    
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class CompleteMyTaskGQL extends Apollo.Mutation<
+  CompleteMyTaskMutation,
+  CompleteMyTaskMutationVariables
+> {
+  document = CompleteMyTaskDocument;
+}
 export const GetMyUserDocument = gql`
-    query getMyUser {
-  getMyUser {
-    _id
-    email
-    firstName
-    lastName
+  query getMyUser {
+    getMyUser {
+      _id
+      email
+      firstName
+      lastName
+    }
   }
-}
-    `;
+`;
 
-  @Injectable({
-    providedIn: 'root'
-  })
-  export class GetMyUserGQL extends Apollo.Query<GetMyUserQuery, GetMyUserQueryVariables> {
-    document = GetMyUserDocument;
-    
-  }
+@Injectable({
+  providedIn: 'root',
+})
+export class GetMyUserGQL extends Apollo.Query<
+  GetMyUserQuery,
+  GetMyUserQueryVariables
+> {
+  document = GetMyUserDocument;
+}

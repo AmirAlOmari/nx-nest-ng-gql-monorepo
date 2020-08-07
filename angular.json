@@ -1,128 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "meepo": {
-      "projectType": "application",
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss",
-          "changeDetection": "OnPush"
-        }
-      },
-      "root": "apps/meepo",
-      "sourceRoot": "apps/meepo/src",
-      "prefix": "linkedout",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/meepo",
-            "index": "apps/meepo/src/index.html",
-            "main": "apps/meepo/src/main.ts",
-            "polyfills": "apps/meepo/src/polyfills.ts",
-            "tsConfig": "apps/meepo/tsconfig.app.json",
-            "aot": true,
-            "assets": ["apps/meepo/src/favicon.ico", "apps/meepo/src/assets"],
-            "styles": ["apps/meepo/src/styles.scss"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/meepo/src/environments/environment.ts",
-                  "with": "apps/meepo/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "meepo:build",
-            "proxyConfig": "apps/meepo/proxy.conf.json"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "meepo:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "meepo:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/meepo/tsconfig.app.json",
-              "apps/meepo/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/meepo/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/meepo/jest.config.js",
-            "tsConfig": "apps/meepo/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/meepo/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "meepo-e2e": {
-      "root": "apps/meepo-e2e",
-      "sourceRoot": "apps/meepo-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/meepo-e2e/cypress.json",
-            "tsConfig": "apps/meepo-e2e/tsconfig.e2e.json",
-            "devServerTarget": "meepo:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "meepo:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/meepo-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/meepo-e2e/**"]
-          }
-        }
-      }
-    },
     "api": {
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
@@ -166,14 +44,13 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**"]
+            "exclude": ["**/node_modules/**", "!apps/api/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/api/jest.config.js",
-            "tsConfig": "apps/api/tsconfig.spec.json",
             "passWithNoTests": true
           }
         },
@@ -203,14 +80,13 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**"]
+            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/api-interfaces/jest.config.js",
-            "tsConfig": "libs/api-interfaces/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
@@ -229,16 +105,14 @@
               "libs/data-access/tsconfig.lib.json",
               "libs/data-access/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/data-access/**"]
+            "exclude": ["**/node_modules/**", "!libs/data-access/**/*"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/data-access/jest.config.js",
-            "tsConfig": "libs/data-access/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/data-access/src/test-setup.ts"
+            "passWithNoTests": true
           }
         },
         "generate": {
@@ -246,7 +120,7 @@
           "options": {
             "commands": [
               {
-                "command": "npx graphql-codegen --config libs/data-access/codegen.yml"
+                "command": "yarn run graphql-codegen -c libs/data-access/codegen.yml -o && yarn run nx lint data-access --fix --skip-nx-cache && yarn run nx format:write --projects=data-access --skip-nx-cache"
               }
             ]
           }
@@ -255,6 +129,130 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss"
+        }
+      }
+    },
+    "frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss",
+          "changeDetection": "OnPush",
+          "prefix": "frontend"
+        }
+      },
+      "root": "apps/frontend",
+      "sourceRoot": "apps/frontend/src",
+      "prefix": "linkedout",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/frontend",
+            "index": "apps/frontend/src/index.html",
+            "main": "apps/frontend/src/main.ts",
+            "polyfills": "apps/frontend/src/polyfills.ts",
+            "tsConfig": "apps/frontend/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/frontend/src/favicon.ico",
+              "apps/frontend/src/assets"
+            ],
+            "styles": ["apps/frontend/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/src/environments/environment.ts",
+                  "with": "apps/frontend/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "frontend:build",
+            "proxyConfig": "apps/frontend/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "frontend:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "frontend:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/frontend/tsconfig.app.json",
+              "apps/frontend/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/frontend/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/frontend/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "frontend-e2e": {
+      "root": "apps/frontend-e2e",
+      "sourceRoot": "apps/frontend-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/frontend-e2e/cypress.json",
+            "tsConfig": "apps/frontend-e2e/tsconfig.e2e.json",
+            "devServerTarget": "frontend:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "frontend:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/frontend-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/frontend-e2e/**/*"]
+          }
         }
       }
     }
@@ -271,5 +269,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "meepo"
+  "defaultProject": "frontend"
 }

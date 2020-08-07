@@ -1,0 +1,76 @@
+<ng-container *ngIf="{ isSubmitting: isSubmitting$ | async } as obses">
+  <form class="register-form" [formGroup]="registerForm" (submit)="submit()">
+    <fieldset [disabled]="obses.isSubmitting">
+      <mat-form-field appearance="fill">
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          formControlName="firstName"
+          placeholder="First name"
+          type="text"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Last name</mat-label>
+        <input
+          matInput
+          formControlName="lastName"
+          placeholder="Last name"
+          type="text"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="Email"
+          type="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          placeholder="Password"
+          [type]="passwordVisible ? 'text' : 'password'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="passwordVisible = !passwordVisible"
+          [attr.aria-label]="'Hide password'"
+        >
+          <mat-icon>{{
+            passwordVisible ? 'visibility_off' : 'visibility'
+          }}</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="obses.isSubmitting"
+      >
+        <ng-container
+          *ngTemplateOutlet="!obses.isSubmitting ? regularTmpl : submittingTmpl"
+        ></ng-container>
+
+        <ng-template #regularTmpl>Submit</ng-template>
+
+        <ng-template #submittingTmpl>
+          <mat-spinner
+            style="margin: 10px 10px;"
+            [diameter]="24"
+            [color]="'warn'"
+          ></mat-spinner>
+        </ng-template>
+      </button>
+    </fieldset>
+  </form>
+</ng-container>

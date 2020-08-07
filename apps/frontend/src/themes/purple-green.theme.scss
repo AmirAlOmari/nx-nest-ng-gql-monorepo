@@ -1,0 +1,12 @@
+// Define a theme.
+$purple-green-primary: mat-palette($mat-purple, 700, 500, 800);
+$purple-green-accent: mat-palette($mat-green, A200, A100, A400);
+
+$purple-green-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $purple-green-primary,
+      accent: $purple-green-accent,
+    ),
+  )
+);

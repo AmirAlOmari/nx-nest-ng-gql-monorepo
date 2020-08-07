@@ -3,6 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypegooseModule } from 'nestjs-typegoose';
 import { join } from 'path';
 
+import { CommonModule } from './modules/common/common.module';
 import { ConfigModule } from './modules/config/config.module';
 import { SharedModule } from './modules/shared/shared.module';
 import { JwtModule } from './modules/jwt/jwt.module';
@@ -18,6 +19,8 @@ import { AppService } from './app.service';
 @Module({
   imports: [
     ConfigModule,
+    CommonModule,
+
     GraphQLModule.forRoot({
       autoSchemaFile: join(__dirname, './schema.gql'),
       // context: (c: any) => c
@@ -31,18 +34,19 @@ import { AppService } from './app.service';
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get('DATABASE_URI'),
         useNewUrlParser: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
       }),
-      inject: [ConfigService]
+      inject: [ConfigService],
     }),
 
     JwtModule,
     SharedModule,
     UsersModule,
     AuthModule,
-    TasksModule
+    TasksModule,
+    CommonModule,
   ],
   controllers: [AppController],
-  providers: [AppService]
+  providers: [AppService],
 })
 export class AppModule {}
