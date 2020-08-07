@@ -12,6 +12,8 @@ import { takeUntil, take } from 'rxjs/operators';
 
 import { RegisterUserGQL } from '@linkedout/data-access';
 
+import { LoggerService } from '../../../common/services/logger/logger.service';
+
 import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
@@ -22,12 +24,13 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
-    public authService: AuthService,
     public fb: FormBuilder,
     public route: ActivatedRoute,
     public router: Router,
     public snackbar: MatSnackBar,
-    public registerUserGQL: RegisterUserGQL
+    public registerUserGQL: RegisterUserGQL,
+    public logger: LoggerService,
+    public authService: AuthService
   ) {}
 
   ngDestroy$ = new Subject<void>();
@@ -66,7 +69,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngDestroy$))
       .subscribe(
         async (gqlResult) => {
-          console.log('Register: Succeed 🎉', gqlResult);
+          this.logger.debug('Register: Succeed 🎉', gqlResult);
 
           onFinnaly();
 

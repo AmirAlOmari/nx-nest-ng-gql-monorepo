@@ -7,8 +7,8 @@ import { takeUntil, mergeMap, map, switchMap, tap, take } from 'rxjs/operators';
 
 import { LoginGQL, LoginMutation } from '@linkedout/data-access';
 
-import { LoggedUserInfo } from '../../../../interfaces/logged-user-info/logged-user-info.interface';
-import { LoggedUserService } from '../../../../services/logged-user/logged-user.service';
+import { LoggedUserInfo } from '../../../common/interfaces/logged-user-info/logged-user-info.interface';
+import { LoggedUserService } from '../../../common/services/logged-user/logged-user.service';
 
 import { LoginRouteQueryParams } from '../../enums/login-route-query-params/login-route-query-params.enum';
 import { AccessTokenService } from '../access-token/access-token.service';
@@ -65,6 +65,7 @@ export class AuthService implements OnDestroy {
      * Clear all allocated storages
      */
     await this.accessTokenService.removeAccessToken();
+    await this.loggedUserService.set(null);
 
     return this.router.navigate(['/auth/login']);
   }

@@ -6,7 +6,8 @@ import { StoreModule } from '@ngrx/store';
 
 import { DataAccessModule } from '@linkedout/data-access';
 
-import { LoggedUserService } from './services/logged-user/logged-user.service';
+import { CommonModule } from './modules/common/common.module';
+
 import { GraphQLModule } from './graphql.module';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,6 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     BrowserAnimationsModule,
 
+    CommonModule,
+
     GraphQLModule,
 
     DataAccessModule,
@@ -25,7 +28,6 @@ import { AppRoutingModule } from './app-routing.module';
     StoreModule.forRoot({}, {}),
     AppRoutingModule,
   ],
-  providers: [LoggedUserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -16,6 +16,8 @@ import {
   Task,
 } from '@linkedout/data-access';
 
+import { LoggerService } from '../../../common/services/logger/logger.service';
+
 import { CreateTaskDialogComponent } from '../../dialogs/create-task-dialog/create-task-dialog.component';
 import {
   UpdateTaskDialogComponent,
@@ -36,7 +38,8 @@ export class TaskListComponent implements OnInit, OnDestroy {
   constructor(
     public dialog: MatDialog,
     public getMyTasksGQL: GetMyTasksGQL,
-    public completeMyTaskGQL: CompleteMyTaskGQL
+    public completeMyTaskGQL: CompleteMyTaskGQL,
+    public logger: LoggerService
   ) {}
 
   protected ngDestroy$ = new Subject<void>();
@@ -76,7 +79,7 @@ export class TaskListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngDestroy$))
       .subscribe(
         (result) => {
-          console.log(result);
+          this.logger.debug(result);
         },
         (error) => {
           console.error(error);

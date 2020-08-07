@@ -15,6 +15,8 @@ import {
   Task,
 } from '@linkedout/data-access';
 
+import { LoggerService } from '../../../common/services/logger/logger.service';
+
 export interface RemoveTaskDialogData {
   task: Task;
 }
@@ -29,7 +31,8 @@ export class RemoveTaskDialogComponent implements OnInit, OnDestroy {
   constructor(
     public dialogRef: MatDialogRef<RemoveTaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: RemoveTaskDialogData,
-    public removeMyTaskGQL: RemoveMyTaskGQL
+    public removeMyTaskGQL: RemoveMyTaskGQL,
+    public logger: LoggerService
   ) {}
 
   ngDestroy$ = new Subject<void>();
@@ -52,7 +55,7 @@ export class RemoveTaskDialogComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngDestroy$))
       .subscribe(
         (result) => {
-          console.log(result);
+          this.logger.debug(result);
 
           onFinally();
 

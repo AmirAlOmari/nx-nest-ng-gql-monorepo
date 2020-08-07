@@ -9,13 +9,15 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject, BehaviorSubject, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import {
   UpdateMyTaskGQL,
   GetMyTasksDocument,
   Task,
 } from '@linkedout/data-access';
-import { takeUntil } from 'rxjs/operators';
+
+import { LoggerService } from '../../../common/services/logger/logger.service';
 
 export interface UpdateTaskDialogData {
   task: Task;
@@ -33,7 +35,8 @@ export class UpdateTaskDialogComponent implements OnInit, OnDestroy {
     public snackbar: MatSnackBar,
     public dialogRef: MatDialogRef<UpdateTaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: UpdateTaskDialogData,
-    public updateMyTaskGQL: UpdateMyTaskGQL
+    public updateMyTaskGQL: UpdateMyTaskGQL,
+    public logger: LoggerService
   ) {}
 
   ngDestroy$ = new Subject<void>();
@@ -68,7 +71,7 @@ export class UpdateTaskDialogComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngDestroy$))
       .subscribe(
         (result) => {
-          console.log(result);
+          this.logger.debug(result);
 
           onFinally();
 

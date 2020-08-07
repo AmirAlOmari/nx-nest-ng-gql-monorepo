@@ -7,7 +7,7 @@ import {
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 
-import { routeSlideInAnimation } from '../../../../animations/route-slide-in/route-slide-in.animation';
+import { routeSlideInAnimation } from '../../../common/animations/route-slide-in/route-slide-in.animation';
 
 import { DrawerButton } from '../../interfaces/drawer-button/drawer-button.interface';
 

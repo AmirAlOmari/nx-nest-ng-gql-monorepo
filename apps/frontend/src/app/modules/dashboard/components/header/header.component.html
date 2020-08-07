@@ -8,10 +8,6 @@
 
     <span class="global-spacer"></span>
 
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
-    </button>
-
     <ng-container *ngIf="{ loggedUser: loggedUser$ | async } as obses">
       <ng-container *ngIf="!obses.loggedUser">
         <mat-spinner></mat-spinner>
@@ -28,6 +24,8 @@
         ></ng-container
       >
     </ng-container>
+
+    <frontend-theme-picker></frontend-theme-picker>
 
     <button mat-icon-button matTooltip="Logout" (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>

@@ -16,6 +16,24 @@
     .content {
       padding: 24px;
 
+      .top-block {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+
+        .header {
+          display: flex;
+          flex-direction: row;
+          margin: 12px;
+          min-width: 340px;
+
+          .title {
+            margin: 0px;
+          }
+        }
+      }
+
       .be-message-container {
         display: flex;
         width: 100%;

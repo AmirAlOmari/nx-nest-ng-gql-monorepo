@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { Subject } from 'rxjs';
 
-import { LoggedUserService } from '../../../../services/logged-user/logged-user.service';
+import { LoggedUserService } from '../../../common/services/logged-user/logged-user.service';
 
 import { AuthService } from '../../../auth/services/auth/auth.service';
 

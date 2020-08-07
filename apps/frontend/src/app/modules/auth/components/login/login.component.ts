@@ -10,6 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject, BehaviorSubject, timer } from 'rxjs';
 import { takeUntil, take } from 'rxjs/operators';
 
+import { LoggerService } from '../../../common/services/logger/logger.service';
+
 import { LoginRouteQueryParams } from '../../enums/login-route-query-params/login-route-query-params.enum';
 import { AuthService } from '../../services/auth/auth.service';
 
@@ -25,6 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     public route: ActivatedRoute,
     public router: Router,
     public snackbar: MatSnackBar,
+    public logger: LoggerService,
     public authService: AuthService
   ) {}
 
@@ -62,7 +65,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngDestroy$))
       .subscribe(
         (gqlResult) => {
-          console.log('Login: Succeed 🎉', gqlResult);
+          this.logger.debug('Login: Succeed 🎉', gqlResult);
 
           onFinnaly();
 

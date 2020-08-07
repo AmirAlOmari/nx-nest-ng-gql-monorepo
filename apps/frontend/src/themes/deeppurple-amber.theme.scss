@@ -1,20 +1,12 @@
-@import '~@angular/material/theming';
-
-// Include non-theme styles for core.
-@include mat-core();
-
 // Define a theme.
-$primary: mat-palette($mat-deep-purple);
-$accent: mat-palette($mat-amber, A200, A100, A400);
+$deeppurple-amber-primary: mat-palette($mat-deep-purple);
+$deeppurple-amber-accent: mat-palette($mat-amber, A200, A100, A400);
 
-$theme: mat-light-theme(
+$deeppurple-amber-theme: mat-light-theme(
   (
     color: (
-      primary: $primary,
-      accent: $accent,
+      primary: $deeppurple-amber-primary,
+      accent: $deeppurple-amber-accent,
     ),
   )
 );
-
-// Include all theme styles for the components.
-@include angular-material-theme($theme);

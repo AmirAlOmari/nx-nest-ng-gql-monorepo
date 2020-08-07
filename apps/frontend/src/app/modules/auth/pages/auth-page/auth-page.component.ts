@@ -21,7 +21,10 @@ import {
 
 import { Message } from '@linkedout/api-interfaces';
 
-import { fadeInAnimation } from '../../../../animations/fade-in/fade-in.animation';
+import { Themes } from '../../../common/enums/themes/themes.enum';
+import { AvailableTheme } from '../../../common/interfaces/available-theme/available-theme.interface';
+import { fadeInAnimation } from '../../../common/animations/fade-in/fade-in.animation';
+import { ThemeService } from '../../../common/services/theme/theme.service';
 
 import { AuthMode } from '../../enums/auth-mode/auth-mode.enum';
 import { AuthService } from '../../services/auth/auth.service';
@@ -38,6 +41,7 @@ export class AuthPageComponent implements OnInit, OnDestroy {
     public route: ActivatedRoute,
     public router: Router,
     public http: HttpClient,
+    public themeService: ThemeService,
     public authService: AuthService
   ) {}
 

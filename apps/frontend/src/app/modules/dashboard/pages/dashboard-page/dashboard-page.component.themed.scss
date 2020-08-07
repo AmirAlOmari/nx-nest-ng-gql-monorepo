@@ -1,6 +1,3 @@
-// Import library functions for theme creation.
-@import '~@angular/material/theming';
-
 @mixin dashboard-page-color($config-or-theme) {
   // Extract the color configuration in case a theme has been passed.
   // This allows consumers to either pass a theme object or a color configuration.

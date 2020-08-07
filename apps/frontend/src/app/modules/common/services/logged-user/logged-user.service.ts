@@ -1,6 +1,8 @@
 import { Injectable, OnInit, Inject } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { LOCAL_STORAGE, WebStorageService } from 'ngx-webstorage-service';
+import { BehaviorSubject } from 'rxjs';
+
+import { LoggerService } from '../../../common/services/logger/logger.service';
 
 import { LoggedUserInfo } from '../../interfaces/logged-user-info/logged-user-info.interface';
 import { LUStorageKey } from '../../constants/logged-user-storage-key/logged-user-storage-key.const';
@@ -10,7 +12,8 @@ import { LUStorageKey } from '../../constants/logged-user-storage-key/logged-use
 })
 export class LoggedUserService implements OnInit {
   constructor(
-    @Inject(LOCAL_STORAGE) public webStorageService: WebStorageService
+    @Inject(LOCAL_STORAGE) public webStorageService: WebStorageService,
+    public logger: LoggerService
   ) {
     /**
      *  Note: Ng doesn't call this hook for services 🤷‍♀️
@@ -55,16 +58,16 @@ export class LoggedUserService implements OnInit {
     await this.webStorageService.remove(LUStorageKey);
   }
 
-  protected async initLoggedUser() {
-    const loggedUser = await this.retrieve();
+  protected async init() {
+    const data = await this.retrieve();
 
-    if (loggedUser) {
-      this._stream$.next(loggedUser);
+    if (data) {
+      this._stream$.next(data);
     }
   }
 
   ngOnInit() {
-    console.log('LoggedUserService#ngOnInit(): here 👋');
-    this.initLoggedUser();
+    this.logger.debug(`${LoggedUserService.name}#ngOnInit(): instantiated 👋`);
+    this.init();
   }
 }

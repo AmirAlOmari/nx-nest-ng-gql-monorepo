@@ -9,9 +9,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subject, BehaviorSubject, timer } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { CreateMyTaskGQL, GetMyTasksDocument } from '@linkedout/data-access';
-import { takeUntil } from 'rxjs/operators';
+
+import { LoggerService } from '../../../common/services/logger/logger.service';
 
 @Component({
   selector: 'frontend-create-task-dialog',
@@ -24,7 +26,8 @@ export class CreateTaskDialogComponent implements OnInit, OnDestroy {
     public fb: FormBuilder,
     public snackbar: MatSnackBar,
     public dialogRef: MatDialogRef<CreateTaskDialogComponent>,
-    public createMyTaskGQL: CreateMyTaskGQL
+    public createMyTaskGQL: CreateMyTaskGQL,
+    public logger: LoggerService
   ) {}
 
   ngDestroy$ = new Subject<void>();
@@ -57,7 +60,7 @@ export class CreateTaskDialogComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.ngDestroy$))
       .subscribe(
         (result) => {
-          console.log(result);
+          this.logger.debug(result);
 
           onFinally();
 

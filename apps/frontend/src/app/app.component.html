@@ -1,1 +1,5 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="{} as obses">
+  <section class="themed-root" [class]="theme + '-theme'">
+    <router-outlet></router-outlet>
+  </section>
+</ng-container>
