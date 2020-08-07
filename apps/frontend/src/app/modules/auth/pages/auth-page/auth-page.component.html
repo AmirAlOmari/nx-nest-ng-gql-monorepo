@@ -40,30 +40,18 @@
         </section>
 
         <ng-container
-          *ngTemplateOutlet="
-            obses.isPageLoading
-              ? loadingTmpl
-              : obses.isLoginAuthMode
-              ? loginTmpl
-              : obses.isRegisterAuthMode
-              ? registerTmpl
-              : null
-          "
+          *ngTemplateOutlet="!obses.isPageLoading ? regularTmpl : loadingTmpl"
         ></ng-container>
       </ng-container>
+
+      <ng-template #regularTmpl>
+        <router-outlet></router-outlet>
+      </ng-template>
 
       <ng-template #loadingTmpl>
         <section class="loading-container">
           Loading...
         </section>
-      </ng-template>
-
-      <ng-template #loginTmpl>
-        <frontend-login></frontend-login>
-      </ng-template>
-
-      <ng-template #registerTmpl>
-        <frontend-register></frontend-register>
       </ng-template>
     </section>
   </section>
