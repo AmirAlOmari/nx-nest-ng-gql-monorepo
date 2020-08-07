@@ -137,7 +137,8 @@
       "schematics": {
         "@nrwl/angular:component": {
           "style": "scss",
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "prefix": "frontend"
         }
       },
       "root": "apps/frontend",

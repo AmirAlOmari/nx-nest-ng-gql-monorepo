@@ -1,0 +1,8 @@
+@import './app/modules/auth/pages/auth-page/auth-page.component.themed.scss';
+@import './app/modules/dashboard/pages/dashboard-page/dashboard-page.component.themed.scss';
+
+// Include theme styles for your custom components.
+@mixin custom-components-theme($theme) {
+  @include auth-page-theme($theme);
+  @include dashboard-page-theme($theme);
+}

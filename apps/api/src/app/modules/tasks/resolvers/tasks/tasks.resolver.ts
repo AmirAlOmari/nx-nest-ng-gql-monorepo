@@ -68,7 +68,9 @@ export class TasksResolver {
     @Args('input') input: UpdateMyTaskInput,
     @GqlUser() user: DocumentType<User>
   ) {
-    throw new Error('Not implemented yet');
+    const updatedTask = await this.taskService.updateTaskForUser(user, input);
+
+    return updatedTask.toObject();
   }
 
   @Mutation((returns) => TaskObjectType)
@@ -77,7 +79,9 @@ export class TasksResolver {
     @Args('input') input: RemoveMyTaskInput,
     @GqlUser() user: DocumentType<User>
   ) {
-    throw new Error('Not implemented yet');
+    const removedTask = await this.taskService.removeTask(input._id);
+
+    return removedTask;
   }
 
   @Mutation((returns) => TaskObjectType)
@@ -86,6 +90,8 @@ export class TasksResolver {
     @Args('input') input: CompleteMyTaskInput,
     @GqlUser() user: DocumentType<User>
   ) {
-    throw new Error('Not implemented yet');
+    const updatedTask = await this.taskService.completeTask(input._id);
+
+    return updatedTask;
   }
 }

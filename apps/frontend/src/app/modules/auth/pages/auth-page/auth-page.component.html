@@ -1,7 +1,64 @@
-<ng-container *ngIf="isLoginAuthMode$ | async">
-  <frontend-login></frontend-login>
-</ng-container>
+<section
+  *ngIf="{
+    isLoginAuthMode: isLoginAuthMode$ | async,
+    isRegisterAuthMode: isRegisterAuthMode$ | async,
+    isPageLoading: isPageLoading$ | async
+  } as obses"
+  class="auth-page"
+>
+  <section class="content-container" [@fadeInAnimation]>
+    <section class="progress-bar-container" *ngIf="obses.isPageLoading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </section>
 
-<ng-container *ngIf="isRegisterAuthMode$ | async">
-  <frontend-register></frontend-register>
-</ng-container>
+    <section class="content">
+      <div class="top-block">
+        <div class="header">
+          <h1 class="title">Welcome to frontend!</h1>
+
+          <span class="global-spacer"></span>
+
+          <frontend-theme-picker></frontend-theme-picker>
+        </div>
+        <img width="250" src="../../../../../assets/nx-logo.png" />
+      </div>
+
+      <div class="be-message-container" [ngClass]="{ open: hello }">
+        <p class="be-message">Message: {{ hello | json }}</p>
+      </div>
+
+      <ng-container>
+        <section class="auth-links-container">
+          <a
+            class="auth-link"
+            mat-button
+            [routerLink]="['/auth/login']"
+            [routerLinkActive]="'active'"
+            >Login</a
+          >
+          <a
+            class="auth-link"
+            mat-button
+            [routerLink]="['/auth/register']"
+            [routerLinkActive]="'active'"
+            >Register</a
+          >
+        </section>
+
+        <ng-container
+          *ngTemplateOutlet="!obses.isPageLoading ? regularTmpl : loadingTmpl"
+        ></ng-container>
+      </ng-container>
+
+      <ng-template #regularTmpl>
+        <router-outlet></router-outlet>
+      </ng-template>
+
+      <ng-template #loadingTmpl>
+        <section class="loading-container">
+          Loading...
+        </section>
+      </ng-template>
+    </section>
+  </section>
+</section>

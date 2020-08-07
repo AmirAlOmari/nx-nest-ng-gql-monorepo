@@ -1,0 +1,13 @@
+// Define a theme
+// Define a theme.
+$pink-bluegrey-primary: mat-palette($mat-pink, 700, 500, 900);
+$pink-bluegrey-accent: mat-palette($mat-blue-grey, A200, A100, A400);
+
+$pink-bluegrey-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $pink-bluegrey-primary,
+      accent: $pink-bluegrey-accent,
+    ),
+  )
+);

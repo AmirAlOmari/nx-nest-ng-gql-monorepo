@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+
+import { CommonModule } from '../common/common.module';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { AccessTokenService } from './services/access-token/access-token.service';
@@ -12,7 +13,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthPageComponent } from './pages/auth-page/auth-page.component';
 
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, AuthRoutingModule],
+  imports: [
+    HttpClientModule,
+    ReactiveFormsModule,
+
+    CommonModule,
+
+    AuthRoutingModule,
+  ],
   declarations: [LoginComponent, RegisterComponent, AuthPageComponent],
   providers: [
     AccessTokenService,

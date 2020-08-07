@@ -1,0 +1,37 @@
+@import '~@angular/material/theming';
+
+// Include non-theme styles for core.
+@include mat-core();
+
+@import './themes/deeppurple-amber.theme.scss';
+@import './themes/indigo-pink.theme.scss';
+@import './themes/purple-green.theme.scss';
+@import './themes/pink-bluegrey.theme.scss';
+@import './themes/nature.theme.scss';
+
+@import './custom-components-theme.scss';
+
+.deeppurple-amber-theme {
+  @include angular-material-theme($deeppurple-amber-theme);
+  @include custom-components-theme($deeppurple-amber-theme);
+}
+
+.indigo-pink-theme {
+  @include angular-material-theme($indigo-pink-theme);
+  @include custom-components-theme($indigo-pink-theme);
+}
+
+.purple-green-theme {
+  @include angular-material-theme($purple-green-theme);
+  @include custom-components-theme($purple-green-theme);
+}
+
+.pink-bluegrey-theme {
+  @include angular-material-theme($pink-bluegrey-theme);
+  @include custom-components-theme($pink-bluegrey-theme);
+}
+
+.nature-theme {
+  @include angular-material-theme($nature-theme);
+  @include custom-components-theme($nature-theme);
+}

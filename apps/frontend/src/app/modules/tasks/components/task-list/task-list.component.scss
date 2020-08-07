@@ -1,0 +1,16 @@
+.task-list-container {
+  .no-tasks-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30%;
+    margin: 12px auto;
+    padding: 30px;
+    border: 1px grey solid;
+    border-radius: 20px;
+
+    .no-task-message {
+      width: fit-content;
+    }
+  }
+}

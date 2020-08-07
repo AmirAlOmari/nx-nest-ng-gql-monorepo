@@ -1,3 +1,10 @@
 {
-  "conventionalCommits.scopes": ["deps", "deps-cfg", "cc"]
+  "conventionalCommits.scopes": [
+    "deps",
+    "deps-cfg",
+    "cc",
+    "api",
+    "todo",
+    "frontend"
+  ]
 }

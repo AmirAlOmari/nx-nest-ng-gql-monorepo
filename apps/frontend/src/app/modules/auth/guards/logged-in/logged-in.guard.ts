@@ -4,16 +4,18 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   UrlTree,
+  Router,
 } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 
 import { AuthService } from '../../services/auth/auth.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoggedInGuard implements CanActivate {
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public router: Router) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -24,6 +26,8 @@ export class LoggedInGuard implements CanActivate {
     | boolean
     | UrlTree {
     // TODO: explore UrlTree to [de]navigate with the latest approach
-    return this.authService.isLoggedIn();
+    return from(this.authService.isLoggedIn()).pipe(
+      map((isLoggedIn) => isLoggedIn || this.router.parseUrl('/auth/login'))
+    );
   }
 }
