@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/0.0.2...1.0.0) (2020-08-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* **todo:** UpdateMyTaskInput.name now required
+
+### Features
+
+* **api:** add and import common module ([b8ab399](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/b8ab399291acd1529ec11bbf514986a9fa5437da))
+* **api:** add HOSTNAME config var ([74b5986](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/74b5986d6322285407272dba323113e03218f040))
+* **api:** add logger service ([582cd67](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/582cd673387958fa52adbd149ddc96ea1daaa149))
+* **frontend:** new theme system ([651d5b0](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/651d5b0e5f86a6e3adf42496eee15f7f203c5604))
+
+
+### Bug Fixes
+
+* **api:** fix auth password check ([b99b618](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/b99b618556ee3c7b635007b6c657ac7d29f94c7d))
+* **frontend:** remove unnecessary .pipe() ([733a64d](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/733a64d1e750490f9dc616f8fa3aef299c17483d))
+* **frontend:** rework auth-routing to use children ([7ba3272](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/7ba3272a161af9c8b09fef0f21cdb3aedcfd1bac))
+
+
+### Refactor
+
+* **api:** add proper url at startup log ([dfbb4ed](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/dfbb4ed8ca8280f575e5a633c21a1b63754c87a5))
+* **frontend:** restructure material themes ([222acae](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/222acaef82f35b145d19d6414aecd032c7141086))
+
+
+### Others
+
+* **cc:** add frontned scope for vscode ext ([f335efa](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/f335efabc74abeec2476d00bba5af35fb62c5a78))
+* **todo:** split changes into commits & name everything properly ([8df6c07](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/8df6c07f71370a9541937ebabfb96967e329cc57))
+
 ### [0.0.2](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/0.0.1...0.0.2) (2020-08-05)
 
 
