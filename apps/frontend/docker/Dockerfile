@@ -1,4 +1,4 @@
-FROM nginx:1.18-alpine
+FROM nginx:1.14-alpine
 
 ## Copy our default nginx config
 COPY ./apps/frontend/nginx/default.conf /etc/nginx/conf.d/
