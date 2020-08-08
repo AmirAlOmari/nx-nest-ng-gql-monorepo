@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.2](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/1.0.1...1.0.2) (2020-08-08)
+
+
+### Bug Fixes
+
+* **frontend:** change default theme from purple-green to deeppurple-amber ([17e1bb7](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/17e1bb73cfce2f2c3e40e777bfb25d924aedff49))
+* **frontend:** deduplicate ng material density styles ([a6ed8da](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/a6ed8dab282a4e3cd38374482e22fafcaa8754aa))
+* fix merge overrides ([d2b5e36](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/d2b5e36d1c48b3f0f4d3480ad944de95cd642e4f))
+
+
+### Build
+
+* **tools/scripts:** redirect all outputs to same file ([c00dce8](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/c00dce8c51f22462df387b3d99e974aee19cdc60))
+* update build/run scripts ([ccd70ec](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/ccd70ec8a8f36ad8fb7da8b9ba3a79a367a5719f))
+* **frontend:** use downgrade nginx from 1.18 to 1.14 ([2964ed2](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/2964ed2802eb5e23f771f4c693dbe758858a2295))
+* redirect both std- err/out to the same file ([8414116](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/84141167432849ddbe5f144d6a0a865003e57d65))
+* **all:** provide basic build scripts and configs ([1691955](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/169195579d2e92af1d10ce36458e3542e57c276c))
+* move /scripts -> /tools/scripts ([c909ce5](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/c909ce505c8d190417214553dc2bf67036feb841))
+
+
+### Others
+
+* **cc:** add tools and tools/scripts scopes for vscode ext ([5a29d03](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/5a29d036e158b4cdca4dfbb40c85ddda46ad1db9))
+* **cc): chore(cc:** add all scope for vscode ext ([0575747](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/0575747fa7195336288c2a829e84f38d54fc6fe1))
+* replace meepo -> frontend ([8318d9c](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/8318d9cfad62e0347f649199b582b4ec8241b154))
+
+
+### Refactor
+
+* **frontend:** simplify WBS usages ([bfa8159](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/bfa8159fe06a3171ec2039695b710dff51df295b))
+
 ### [1.0.1](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/1.0.0...1.0.1) (2020-08-07)
 
 
