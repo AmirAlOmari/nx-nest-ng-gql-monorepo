@@ -6,6 +6,8 @@
     "api",
     "todo",
     "frontend",
-    "all"
+    "all",
+    "tools",
+    "tools/scripts"
   ]
 }
