@@ -11,27 +11,39 @@
 
 @import './custom-components-theme.scss';
 
+@include angular-material-theme($deeppurple-amber-theme);
+
 .deeppurple-amber-theme {
-  @include angular-material-theme($deeppurple-amber-theme);
+  @include angular-material-color($deeppurple-amber-theme);
+  @include angular-material-typography($deeppurple-amber-theme);
+
   @include custom-components-theme($deeppurple-amber-theme);
 }
 
 .indigo-pink-theme {
-  @include angular-material-theme($indigo-pink-theme);
+  @include angular-material-color($indigo-pink-theme);
+  @include angular-material-typography($indigo-pink-theme);
+
   @include custom-components-theme($indigo-pink-theme);
 }
 
 .purple-green-theme {
-  @include angular-material-theme($purple-green-theme);
+  @include angular-material-color($purple-green-theme);
+  @include angular-material-typography($purple-green-theme);
+
   @include custom-components-theme($purple-green-theme);
 }
 
 .pink-bluegrey-theme {
-  @include angular-material-theme($pink-bluegrey-theme);
+  @include angular-material-color($pink-bluegrey-theme);
+  @include angular-material-typography($pink-bluegrey-theme);
+
   @include custom-components-theme($pink-bluegrey-theme);
 }
 
 .nature-theme {
-  @include angular-material-theme($nature-theme);
+  @include angular-material-color($nature-theme);
+  @include angular-material-typography($nature-theme);
+
   @include custom-components-theme($nature-theme);
 }
