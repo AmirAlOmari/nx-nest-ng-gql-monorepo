@@ -5,6 +5,9 @@
     "cc",
     "api",
     "todo",
-    "frontend"
+    "frontend",
+    "all",
+    "tools",
+    "tools/scripts"
   ]
 }
