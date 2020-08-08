@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 LIKE_STR=${1}
 

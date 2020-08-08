@@ -1,12 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
 PROJECT=${1}
 
-if [[ -z "$PROJECT" ]]
+if [ -z "${PROJECT}" ]]
 then
   echo '$PROJECT(1) NOT SPECIFIED'
   exit 1
 else
+  echo '$PROJECT(1) specified'
+fi
 
 FROM_TAG=${2}
 TO_TAG=${3:-$(git log HEAD -n 1 --pretty=format:"%H" | cut -c1-8)}

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 COMMIT=$(git log HEAD -n 1 --pretty=format:"%H" | cut -c1-8)
 
 TAG=${1:-$COMMIT}
@@ -21,10 +23,20 @@ yarn run nx build api -c production
 echo '### Build api image'
 docker image inspect $IMAGE:$TAG-api > /dev/null || docker build --cache-from $IMAGE:latest-api -f ./apps/api/docker/Dockerfile -t $IMAGE:$TAG-api -t $IMAGE:latest-api --build-arg GIT_COMMIT_ARG=$(git log -n 1 HEAD --format="%h") . || exit 1
 
----
-echo '### PUSHING api DOCKER IMAGE' $IMAGE:$TAG
-time docker push $IMAGE:$TAG-api || exit 1
+# ---
+if [ -z "$DOCKER_PUSH" ]]
+then
+  echo '### $DOCKER_PUSH is not, skiping'
+else
+  echo '### PUSHING api DOCKER IMAGE' $IMAGE:$TAG
+  time docker push $IMAGE:$TAG-api || exit 1
+fi
 
 # # ---
-# echo '### PUSHING GIT COMMIT(S)'
-# git push || exit 1
+if [ -z "$GIT_PUSH" ]]
+then
+  echo '### $GIT_PUSH is not, skiping'
+else
+  echo '### PUSHING GIT COMMIT(S)'
+  git push || exit 1
+fi
