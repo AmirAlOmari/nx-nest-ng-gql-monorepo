@@ -42,16 +42,11 @@ export class LoggedUserService implements OnInit {
   }
 
   protected async store(data: LoggedUserInfo): Promise<void> {
-    const stringifiedData = JSON.stringify(data);
-
-    await this.webStorageService.set(LUStorageKey, stringifiedData);
+    await this.webStorageService.set(LUStorageKey, data);
   }
 
   protected async retrieve(): Promise<LoggedUserInfo | null> {
-    const retrieved = await this.webStorageService.get(LUStorageKey);
-    const parsed = retrieved && JSON.parse(retrieved);
-
-    return parsed;
+    return await this.webStorageService.get(LUStorageKey);
   }
 
   protected async remove(): Promise<void> {

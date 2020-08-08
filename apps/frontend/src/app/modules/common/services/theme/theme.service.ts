@@ -45,16 +45,11 @@ export class ThemeService implements OnInit, OnDestroy {
   }
 
   protected async store(data: Themes): Promise<void> {
-    const stringifiedData = data;
-
-    await this.webStorageService.set(STStorageKey, stringifiedData);
+    await this.webStorageService.set(STStorageKey, data);
   }
 
   protected async retrieve(): Promise<Themes | null> {
-    const retrieved = await this.webStorageService.get(STStorageKey);
-    const parsed = retrieved;
-
-    return parsed;
+    return await this.webStorageService.get(STStorageKey);
   }
 
   protected async remove(): Promise<void> {
