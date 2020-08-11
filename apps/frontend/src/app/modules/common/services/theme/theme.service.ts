@@ -44,6 +44,12 @@ export class ThemeService implements OnInit, OnDestroy {
     return this._loading$.asObservable();
   }
 
+  public createCSSClassForTheme(theme: Themes) {
+    const cssClass = `${theme}-theme`;
+
+    return cssClass;
+  }
+
   protected async store(data: Themes): Promise<void> {
     await this.webStorageService.set(STStorageKey, data);
   }
