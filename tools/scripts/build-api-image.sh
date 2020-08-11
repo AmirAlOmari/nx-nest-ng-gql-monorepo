@@ -24,7 +24,7 @@ echo '### Build api image'
 docker image inspect $IMAGE:$TAG-api > /dev/null || docker build --cache-from $IMAGE:latest-api -f ./apps/api/docker/Dockerfile -t $IMAGE:$TAG-api -t $IMAGE:latest-api --build-arg GIT_COMMIT_ARG=$(git log -n 1 HEAD --format="%h") . || exit 1
 
 # ---
-if [ -z "$DOCKER_PUSH" ]]
+if [ -z "$DOCKER_PUSH" ]
 then
   echo '### $DOCKER_PUSH is not, skiping'
 else
@@ -33,7 +33,7 @@ else
 fi
 
 # # ---
-if [ -z "$GIT_PUSH" ]]
+if [ -z "$GIT_PUSH" ]
 then
   echo '### $GIT_PUSH is not, skiping'
 else

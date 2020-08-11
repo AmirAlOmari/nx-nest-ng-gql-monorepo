@@ -2,7 +2,7 @@
 
 PROJECT=${1}
 
-if [ -z "${PROJECT}" ]]
+if [ -z "${PROJECT}" ]
 then
   echo '$PROJECT(1) NOT SPECIFIED'
   exit 1
