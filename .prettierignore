@@ -45,6 +45,9 @@ Thumbs.db
 # Yarn cache
 /.ycache
 
+# Firebase
+.firebase
+
 #######
 # OWN #
 #######
