@@ -2,6 +2,40 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/1.0.2...1.1.0) (2020-08-19)
+
+
+### Features
+
+* **api:** enable cors ([395b625](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/395b6256548b9886c7675616cc2ef72f218048a5))
+* **frontend:** add own theme css class for each theme option in picker ([dde43c6](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/dde43c6fb896c21737d0050192f239ba6d1665c0))
+* **frontend:** hello$ use environment.serverUrl ([437ad02](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/437ad02cb55e0739d6fe21bfa264c81deb0d4e8e))
+
+
+### Bug Fixes
+
+* api:generate-gql-schema arch command ([cf7713f](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/cf7713f127d5d131858bb9cb1e042221fae992af))
+* **tools/scripts:** replace ]] with ] ([882ade6](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/882ade64be53a482c159b0bbb4c637db4c4ac8aa))
+
+
+### Build
+
+* **frontend:** add firebase-hosting config for build arch ([ff468da](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/ff468da9416462e2269e34bc473d2651d2b9a243))
+* **frontend:** add linkedout and linkedout-production confs ([cdda602](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/cdda602fc5372116eedba418213d3e72eab184ca))
+* **tools/scripts:** add and use ${FRONTEND/API}_CONF env vars ([52a1e6e](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/52a1e6e16d12e68f06e86a8cf950cdb4eeaae043))
+* add basic gitlab pages configuration ([656402e](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/656402ea7161743f1167252ff918e5283fdc653f))
+
+
+### Others
+
+* **cc:** add k8s scope for vscode ext ([5fba4d3](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/5fba4d3bf89ea16f95f7576b6e3d73544fbc5b3d))
+* **k8s:** add facade ingress and mcert ([9800840](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/9800840e3d194160f6b7b87f264399d76d227bd1))
+* **k8s:** add frontend dplymnt and lb ([5ea5163](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/5ea5163bc9584c263021b8de2ce3855132ed4b73))
+* **k8s:** set mongo statefulset 4.2 version ([e81a9bb](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/e81a9bb1e1caf13e0134ac2540595b649b7128c8))
+* **k8s:** update api dplymnt image ([b8fe03c](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/b8fe03cddd23f2aa08fa8fc955b5c6dcb4cdeb98))
+* add basic firebase config, setup firebase hosting ([e71079d](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/e71079d69ba3397987633d4aa780ef0b156e197e))
+* update ignore files to ignore .firebase ([6abc6e3](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/commit/6abc6e3ab36da0de97b9cea86bc1621ec494c2b0))
+
 ### [1.0.2](https://github.com/AmirAlOmari/nx-nest-ng-gql-monorepo/compare/1.0.1...1.0.2) (2020-08-08)
 
 
