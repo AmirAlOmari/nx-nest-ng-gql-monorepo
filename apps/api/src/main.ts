@@ -21,6 +21,8 @@ async function bootstrap() {
   const hostname = cs.get('HOSTNAME');
   const port = cs.get('PORT');
 
+  app.enableCors();
+
   // Start the server
   await app.listen(port, hostname);
 
