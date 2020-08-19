@@ -21,6 +21,8 @@ import {
 
 import { Message } from '@linkedout/api-interfaces';
 
+import { environment } from '../../../../../environments/environment';
+
 import { Themes } from '../../../common/enums/themes/themes.enum';
 import { AvailableTheme } from '../../../common/interfaces/available-theme/available-theme.interface';
 import { fadeInAnimation } from '../../../common/animations/fade-in/fade-in.animation';
@@ -46,7 +48,7 @@ export class AuthPageComponent implements OnInit, OnDestroy {
   ) {}
 
   private hello$ = timer(300).pipe(
-    switchMap(() => this.http.get<Message>('/api/hello'))
+    switchMap(() => this.http.get<Message>(environment.serverUrl + '/hello'))
   );
 
   hello: Message | null = null;
