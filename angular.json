@@ -60,7 +60,7 @@
             "color": true,
             "commands": [
               {
-                "command": "/tools/scripts/api-generate-gql-schema.sh"
+                "command": "sh ./tools/scripts/api-generate-gql-schema.sh"
               }
             ]
           }
