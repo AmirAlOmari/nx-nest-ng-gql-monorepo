@@ -2,6 +2,8 @@
 
 COMMIT=$(git log HEAD -n 1 --pretty=format:"%H" | cut -c1-8)
 
+FRONTEND_CONF=${FRONTEND_CONF:-"production"}
+
 TAG=${1:-$COMMIT}
 IMAGE=${2:-"linkedout"}
 
@@ -12,7 +14,7 @@ echo '### Install dependencies & store cache'
 ls ./node_modules > /dev/null || yarn --cache-folder .ycache
 
 echo '### Build frontend'
-yarn run nx build frontend -c production
+yarn run nx build frontend -c $FRONTEND_CONF
 
 # # ---
 # echo '### DOWNLOAD CACHE IMAGES IF EXIST'
