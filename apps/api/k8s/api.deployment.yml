@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
         - name: linkedout-api
-          image: gcr.io/praxis-backup-255710/linkedout-api:1.0.1
+          image: gcr.io/genial-smoke-278111/linkedout:1.1.0-api
           env:
             - name: APP_NAME
               value: "linkedout-api"
