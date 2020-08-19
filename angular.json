@@ -226,6 +226,22 @@
                   "replace": "apps/frontend/src/environments/environment.ts",
                   "with": "apps/frontend/src/environments/environment.firebase-hosting.ts"
                 }
+              ]
+            },
+            "linkedout": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/src/environments/environment.ts",
+                  "with": "apps/frontend/src/environments/environment.linkedout.ts"
+                }
+              ]
+            },
+            "linkedout-production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/frontend/src/environments/environment.ts",
+                  "with": "apps/frontend/src/environments/environment.linkedout.ts"
+                }
               ],
               "optimization": true,
               "outputHashing": "all",
@@ -259,6 +275,12 @@
           "configurations": {
             "production": {
               "browserTarget": "frontend:build:production"
+            },
+            "linkedout": {
+              "browserTarget": "frontend:build:linkedout"
+            },
+            "linkedout-production": {
+              "browserTarget": "frontend:build:linkedout-production"
             }
           }
         },

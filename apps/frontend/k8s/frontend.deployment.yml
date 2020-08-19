@@ -1,22 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: linkedout-api
+  name: linkedout-fe
   labels:
-    app: linkedout-api
+    app: linkedout-fe
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        app: linkedout-api
+        app: linkedout-fe
     spec:
       containers:
-        - name: linkedout-api
-          image: gcr.io/genial-smoke-278111/linkedout:1.1.0-api
+        - name: linkedout-fe
+          image: gcr.io/genial-smoke-278111/linkedout:1.1.0-frontend
           env:
             - name: APP_NAME
-              value: "linkedout-api"
+              value: "linkedout-fe"
             - name: TEST_ME
               value: "Hello, world!"
             - name: K8_NODE
@@ -39,8 +39,6 @@ spec:
               value: "3001"
             - name: HOSTNAME
               value: "0.0.0.0"
-            - name: DATABASE_URI
-              value: "mongodb://mongo-0.mongo:27017/staging"
           ports:
-            - containerPort: 3001
-              name: linkedout-api
+            - containerPort: 80
+              name: linkedout-fe
