@@ -1,5 +1,5 @@
 ##################
-# FROM GITIGNORE #
+# FROM GIT IGNORE #
 ##################
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
@@ -44,6 +44,9 @@ Thumbs.db
 
 # Yarn cache
 /.ycache
+
+# Firebase
+.firebase
 
 #######
 # OWN #
