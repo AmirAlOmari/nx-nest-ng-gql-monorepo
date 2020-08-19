@@ -1,0 +1,32 @@
+apiVersion: "extensions/v1beta1"
+kind: "Ingress"
+metadata:
+  name: "linkedout-fa"
+  namespace: "default"
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: linkedout-ip
+    networking.gke.io/managed-certificates: "linkedout-fa-cert"
+spec:
+  backend:
+    serviceName: "linkedout-fe"
+    servicePort: 80
+  rules:
+    - http:
+        paths:
+          - path: "/api/*"
+            backend:
+              serviceName: "linkedout-api"
+              servicePort: 80
+    - http:
+        paths:
+          - path: "/*"
+            backend:
+              serviceName: "linkedout-fe"
+              servicePort: 80
+      host: "linkedout.amir-al-omari.dev"
+    - http:
+        paths:
+          - backend:
+              serviceName: "linkedout-api"
+              servicePort: 80
+      host: "api.linkedout.amir-al-omari.dev"
