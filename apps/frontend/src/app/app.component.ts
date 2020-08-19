@@ -33,9 +33,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   updateThemeOnBody(oldTheme: Themes, newTheme: Themes) {
     const bodyEl = document.body;
+    const cssClassForOldTheme = this.themeService.createCSSClassForTheme(
+      oldTheme
+    );
+    const cssClassForNewTheme = this.themeService.createCSSClassForTheme(
+      newTheme
+    );
 
-    this.renderer2.removeClass(bodyEl, `${oldTheme}-theme`);
-    this.renderer2.addClass(bodyEl, `${newTheme}-theme`);
+    this.renderer2.removeClass(bodyEl, cssClassForOldTheme);
+    this.renderer2.addClass(bodyEl, cssClassForNewTheme);
   }
 
   subscribeToTheme() {

@@ -17,6 +17,7 @@ export class ThemePickerComponent implements OnInit {
     ([key, value]) => ({
       displayName: this.themeToName(value),
       theme: value,
+      cssClass: this.themeService.createCSSClassForTheme(value),
     })
   );
 
