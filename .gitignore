@@ -43,3 +43,6 @@ Thumbs.db
 
 # Firebase
 .firebase
+
+# Temp locals
+dc_alias.sh
