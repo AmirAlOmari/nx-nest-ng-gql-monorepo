@@ -68,7 +68,7 @@
     "argon2": "^0.26.2",
     "bcrypt": "^4.0.1",
     "class-transformer": "^0.3.1",
-    "class-validator": "^0.12.2",
+    "class-validator": "^0.14.0",
     "core-js": "^2.5.4",
     "graphql": "^15.0.0",
     "graphql-tag": "^2.10.0",
